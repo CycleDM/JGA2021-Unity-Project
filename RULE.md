@@ -21,7 +21,7 @@
 - ゲームエンジン： [Unity 2019.4.20f1(LTS)](https://unity3d.com/jp/unity/qa/lts-releases)（←UnityHubでダウンロード出来ない場合はウェブサイトで）
 - コードエディタ：[Visual Studio Code](https://code.visualstudio.com/)
 - プログラミング言語：*C# & Unity C#*
-- プロジェクト名：JGA2021-Unity-Project ←*未定*
+- プロジェクト名：JGA2021-Unity-Project ←*変更する可能性があります*
 
 ブランチ管理方法（*重要）
 ---
