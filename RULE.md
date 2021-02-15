@@ -36,7 +36,7 @@ GitHubの使い方について、今回のプロジェクトは「<font color=da
 Name          | Branch Name
 ------------- | -----------------
 周 進          | `dev_cycledm`
-薛 岩          | `dev_`
+薛 岩          | `dev_Soap`
 王 子彬        | `dev_`
 中里 顕之      | `dev_`
 福田 幸生      | `dev_`
