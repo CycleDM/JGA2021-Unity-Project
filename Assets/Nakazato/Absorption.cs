@@ -11,7 +11,10 @@ public class Absorption : MonoBehaviour
     [SerializeField] private Vector3 junkPos;
 
     // 吸収速度
-    [SerializeField] private float moveVelocity = 0.02f;
+    [SerializeField] private float moveVelocity = 0.005f;
+
+    private Cleaner cleaner;
+    [SerializeField] private GameObject cleanerObj;
 
     // Start is called before the first frame update
     void Start()
@@ -22,54 +25,57 @@ public class Absorption : MonoBehaviour
 
         playerPos = playerObj.transform.position;
         junkPos = transform.position;
+
+        cleanerObj = GameObject.FindWithTag("Cleaner");
+        cleaner = cleanerObj.GetComponent<Cleaner>();
     }
 
     // Update is called once per frame
     void Update()
     {
         // true
-        if(playerController.GetAbsorption())
+        if(playerController.GetAbsorption() && cleaner.GetActive())
         {
-            playerPos = playerObj.transform.position;
-            junkPos = transform.position;
-    
-            if (playerPos.x > junkPos.x)
-            {
-                junkPos.x = junkPos.x + moveVelocity;
-            }
-            else if (playerPos.x < junkPos.x)
-            {
-                junkPos.x = junkPos.x - moveVelocity;
-            }
-    
-            if (playerPos.y > junkPos.y)
-            {
-                junkPos.y = junkPos.y + moveVelocity;
-            }
-            else if (playerPos.y < junkPos.y)
-            {
-                junkPos.y = junkPos.y - moveVelocity;
-            }
-
-            if (playerPos.z > junkPos.z)
-            {
-                junkPos.z = junkPos.z + moveVelocity;
-            }
-            else if (playerPos.z < junkPos.z)
-            {
-                junkPos.z = junkPos.z - moveVelocity;
-            }
-    
-            transform.position = junkPos;
-
-
             //playerPos = playerObj.transform.position;
             //junkPos = transform.position;
     
-            //junkPos.x += (playerPos.x - junkPos.x) * moveVelocity;
-            //junkPos.y += (playerPos.y - junkPos.y) * moveVelocity;
-            //junkPos.z += (playerPos.z - junkPos.z) * moveVelocity;
+            //if (playerPos.x > junkPos.x)
+            //{
+            //    junkPos.x = junkPos.x + moveVelocity;
+            //}
+            //else if (playerPos.x < junkPos.x)
+            //{
+            //    junkPos.x = junkPos.x - moveVelocity;
+            //}
+    
+            //if (playerPos.y > junkPos.y)
+            //{
+            //    junkPos.y = junkPos.y + moveVelocity;
+            //}
+            //else if (playerPos.y < junkPos.y)
+            //{
+            //    junkPos.y = junkPos.y - moveVelocity;
+            //}
+
+            //if (playerPos.z > junkPos.z)
+            //{
+            //    junkPos.z = junkPos.z + moveVelocity;
+            //}
+            //else if (playerPos.z < junkPos.z)
+            //{
+            //    junkPos.z = junkPos.z - moveVelocity;
+            //}
+    
             //transform.position = junkPos;
+
+
+            playerPos = playerObj.transform.position;
+            junkPos = transform.position;
+    
+            junkPos.x += (playerPos.x - junkPos.x) * moveVelocity;
+            junkPos.y += (playerPos.y - junkPos.y) * moveVelocity;
+            junkPos.z += (playerPos.z - junkPos.z) * moveVelocity;
+            transform.position = junkPos;
         }
     }
 
@@ -77,8 +83,9 @@ public class Absorption : MonoBehaviour
     private void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.tag == "Player" && playerController.GetAbsorption())
-        {
-            Destroy(this.gameObject);　//playerを破壊
+        { // ガラクタを破壊
+            Destroy(this.gameObject);
         }
     }
+    
 }
