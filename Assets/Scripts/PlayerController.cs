@@ -4,33 +4,35 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody rig;
     public float moveSpeed = 5;
     //public float jumpVelocity = 5;
     //private bool isOnGround = true;
 
-    public Transform rotationTarget;
-    public float rotationRadius;
+    public GameObject rotationTarget;
 
-    private float angle;
-
-    private Vector3 moveDir;
+    private float radius;
+    private Vector3 center;
 
     // Start is called before the first frame update
     private void Start()
     {
-        rig = GetComponent<Rigidbody>();
-
-        moveDir = Vector3.right;
+        center = new Vector3(rotationTarget.transform.position.x, this.transform.position.y, rotationTarget.transform.position.z);
+        radius = Vector3.Distance(center, this.transform.position);
     }
 
     // Update is called once per frame
-    private void Update()
+    private void FixedUpdate()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-
-        //rig.transform.Translate(Vector3.forward * horizontal * moveSpeed * Time.deltaTime);
+        center = new Vector3(rotationTarget.transform.position.x, this.transform.position.y, rotationTarget.transform.position.z);
+        Vector3 dir = this.transform.position - center;
+        this.transform.right = dir;
         
+        float distance = Vector3.Distance(center, this.transform.position);
+        this.transform.position = center + dir.normalized * radius;
+
+        float horizontal = Input.GetAxis("Horizontal");
+        this.transform.Translate(Vector3.forward * horizontal * moveSpeed * Time.deltaTime);
+
         // Jump
         //if (Input.GetButtonDown("Jump"))
         //{
