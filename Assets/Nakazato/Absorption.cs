@@ -11,7 +11,7 @@ public class Absorption : MonoBehaviour
     [SerializeField] private Vector3 junkPos;
 
     // 吸収速度
-    [SerializeField] private float moveVelocity = 0.01f;
+    [SerializeField] private float moveVelocity = 0.02f;
 
     // Start is called before the first frame update
     void Start()
@@ -33,10 +33,52 @@ public class Absorption : MonoBehaviour
             playerPos = playerObj.transform.position;
             junkPos = transform.position;
     
-            junkPos.x += (playerPos.x - junkPos.x) * moveVelocity;
-            junkPos.y += (playerPos.y - junkPos.y) * moveVelocity;
-            junkPos.z += (playerPos.z - junkPos.z) * moveVelocity;
+            if (playerPos.x > junkPos.x)
+            {
+                junkPos.x = junkPos.x + moveVelocity;
+            }
+            else if (playerPos.x < junkPos.x)
+            {
+                junkPos.x = junkPos.x - moveVelocity;
+            }
+    
+            if (playerPos.y > junkPos.y)
+            {
+                junkPos.y = junkPos.y + moveVelocity;
+            }
+            else if (playerPos.y < junkPos.y)
+            {
+                junkPos.y = junkPos.y - moveVelocity;
+            }
+
+            if (playerPos.z > junkPos.z)
+            {
+                junkPos.z = junkPos.z + moveVelocity;
+            }
+            else if (playerPos.z < junkPos.z)
+            {
+                junkPos.z = junkPos.z - moveVelocity;
+            }
+    
             transform.position = junkPos;
+
+
+            //playerPos = playerObj.transform.position;
+            //junkPos = transform.position;
+    
+            //junkPos.x += (playerPos.x - junkPos.x) * moveVelocity;
+            //junkPos.y += (playerPos.y - junkPos.y) * moveVelocity;
+            //junkPos.z += (playerPos.z - junkPos.z) * moveVelocity;
+            //transform.position = junkPos;
+        }
+    }
+
+    // 吸い込み後の処理 
+    private void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "Player" && playerController.GetAbsorption())
+        {
+            Destroy(this.gameObject);　//playerを破壊
         }
     }
 }

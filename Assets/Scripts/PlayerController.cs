@@ -11,35 +11,26 @@ public class PlayerController : MonoBehaviour
     private bool isOnGround = true;
 
     private bool isAbsorption = false; // 吸収
-    private Vector3 playerPos; //プレイヤーのポジション
+
+    private float horizontal = 0f;
+    private float vertical = 0f;
+
 
     // Start is called before the first frame update
     private void Start()
     {
         rig = GetComponent<Rigidbody>();
-        playerPos = GetComponent<Transform>().position;
         isAbsorption = false;
     }
 
     // Update is called once per frame
     private void Update()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        horizontal = Input.GetAxis("Horizontal");
+        vertical = Input.GetAxis("Vertical");
 
         rig.transform.Translate(Vector3.forward * vertical * moveSpeed * Time.deltaTime);
         rig.transform.Translate(Vector3.right * horizontal * moveSpeed * Time.deltaTime);
-
-        rig.velocity = new Vector3(horizontal * moveSpeed, 0, vertical * moveSpeed); //プレイヤーのRigidbodyに対してInputにspeedを掛けた値で更新し移動
-
-        Vector3 diff = transform.position - playerPos; //プレイヤーがどの方向に進んでいるかがわかるように、初期位置と現在地の座標差分を取得
-
-        if (diff.magnitude > 0.01f)
-        {
-            transform.rotation = Quaternion.LookRotation(diff);  //ベクトルの情報をQuaternion.LookRotationに引き渡し回転量を取得しプレイヤーを回転させる
-        }
-
-        playerPos = transform.position; //プレイヤーの位置を更新
 
         // Jump
         if (Input.GetButtonDown("Jump"))
@@ -63,6 +54,23 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Press.R false");
             isAbsorption = false;
         }
+    }
+
+    private void FixedUpdate() {
+        // カメラの方向から、X-Z平面の単位ベクトルを取得
+        Vector3 cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
+    
+        // 方向キーの入力値とカメラの向きから、移動方向を決定
+        Vector3 moveForward = cameraForward * vertical + Camera.main.transform.right * horizontal;
+    
+        // 移動方向にスピードを掛ける。ジャンプや落下がある場合は、別途Y軸方向の速度ベクトルを足す。
+        rig.velocity = moveForward * moveSpeed + new Vector3(0, rig.velocity.y, 0);
+    
+        // キャラクターの向きを進行方向に
+        if (moveForward != Vector3.zero)
+         {
+            transform.rotation = Quaternion.LookRotation(moveForward);
+         }
     }
 
     private void OnCollisionEnter(Collision other)
