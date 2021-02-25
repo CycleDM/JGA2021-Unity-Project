@@ -8,10 +8,6 @@ public class CameraController : MonoBehaviour
     private PlayerController playerController;
     private Vector3 playerPos;
 
-    private Transform cameraTrans;
-    [SerializeField] private Transform playerTrans;
-    [SerializeField] private Vector3 cameraVec;// = Vector3( 7,  10, 8);
-    [SerializeField] private Vector3 cameraRot;// = Vector3(40,-140, 0); 
     
     void Start () {
         playerObj = GameObject.Find("Player");
