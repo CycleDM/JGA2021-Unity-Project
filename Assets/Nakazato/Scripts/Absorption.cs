@@ -15,8 +15,9 @@ public class Absorption : MonoBehaviour
 
     [SerializeField] private GameObject cleanerObj;
 
-
     [SerializeField] private bool isActive = false;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -72,19 +73,20 @@ public class Absorption : MonoBehaviour
             transform.position = junkPos;
 
 
-           // playerPos = playerObj.transform.position;
-           // junkPos = transform.position;
-    //
-           // junkPos.x += (playerPos.x - junkPos.x) * moveVelocity;
-           // junkPos.y += (playerPos.y - junkPos.y) * moveVelocity;
-           // junkPos.z += (playerPos.z - junkPos.z) * moveVelocity;
-           // transform.position = junkPos;
+           //playerPos = playerObj.transform.position;
+           //junkPos = transform.position;
+
+           //junkPos.x += (playerPos.x - junkPos.x) * moveVelocity;
+           //junkPos.y += (playerPos.y - junkPos.y) * moveVelocity;
+           //junkPos.z += (playerPos.z - junkPos.z) * moveVelocity;
+           //transform.position = junkPos;
 
            
         }
     }
 
-    // 吸い込み判定
+
+    // 吸い込み判定(true)
     void OnTriggerStay(Collider col)
     {
         if(col.gameObject.CompareTag("Cleaner"))
@@ -93,7 +95,7 @@ public class Absorption : MonoBehaviour
             isActive = true;
         }
     }
-
+    // 吸い込み判定(false)
     void OnTriggerExit(Collider col)
     {
         if(col.gameObject.CompareTag("Cleaner"))

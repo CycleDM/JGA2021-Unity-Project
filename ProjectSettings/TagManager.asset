@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Junk
   - Cleaner
+  - Nose
   layers:
   - Default
   - TransparentFX

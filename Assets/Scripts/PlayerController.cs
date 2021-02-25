@@ -14,13 +14,14 @@ public class PlayerController : MonoBehaviour
 
     private float horizontal = 0f;
     private float vertical = 0f;
-
+    private bool isAim = false;
 
     // Start is called before the first frame update
     private void Start()
     {
         rig = GetComponent<Rigidbody>();
         isAbsorption = false;
+        isAim = false;
     }
 
     // Update is called once per frame
@@ -47,15 +48,29 @@ public class PlayerController : MonoBehaviour
         }
 
         // 吸い込み
-        if (Input.GetKey(KeyCode.R))
+        // 右クリック
+        if (Input.GetMouseButton(0))
         {
-            Debug.Log("Press.R true");
+            Debug.Log("PressMouseButton.R true");
             isAbsorption = true;
         }
         else
         {
-            Debug.Log("Press.R false");
+            Debug.Log("PressMouseButton.R false");
             isAbsorption = false;
+        }
+
+        // aim
+        // 左クリック
+        if (Input.GetMouseButton(1))
+        {
+            Debug.Log("PressMouseButton.L true");
+            isAim = true;
+        }
+        else
+        {
+            Debug.Log("PressMouseButton.L false");
+            isAim = false;
         }
     }
 
@@ -85,5 +100,10 @@ public class PlayerController : MonoBehaviour
     public bool GetAbsorption()
     {
         return isAbsorption;
+    }
+
+    public bool GetAimFrag()
+    {
+        return isAim;
     }
 }
