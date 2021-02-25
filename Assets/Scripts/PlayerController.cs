@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
 
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
- 
+
         // Jump
         if (Input.GetButtonDown("Jump"))
         {
@@ -49,32 +49,33 @@ public class PlayerController : MonoBehaviour
 
         // 吸い込み
         // 右クリック
-        if (Input.GetMouseButton(0))
+        if (Input.GetKey(KeyCode.R))
         {
-            Debug.Log("PressMouseButton.R true");
+            Debug.Log("Press.R true");
             isAbsorption = true;
         }
         else
         {
-            Debug.Log("PressMouseButton.R false");
+            Debug.Log("Press.R false");
             isAbsorption = false;
         }
 
         // aim
         // 左クリック
-        if (Input.GetMouseButton(1))
+        if (Input.GetKey(KeyCode.Q))
         {
-            Debug.Log("PressMouseButton.L true");
+            Debug.Log("Press.Q true");
             isAim = true;
         }
         else
         {
-            Debug.Log("PressMouseButton.L false");
+            Debug.Log("Press.Q false");
             isAim = false;
         }
     }
 
-    void FixedUpdate() {
+    void FixedUpdate() 
+    {
         // カメラの方向から、X-Z平面の単位ベクトルを取得
         Vector3 cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
     

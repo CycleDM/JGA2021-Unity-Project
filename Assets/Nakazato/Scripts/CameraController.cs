@@ -4,29 +4,45 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    GameObject targetObj;
-    Vector3 targetPos;
+    private GameObject playerObj;
+    private PlayerController playerController;
+    private Vector3 playerPos;
+
+    private Transform cameraTrans;
+    [SerializeField] private Transform playerTrans;
+    [SerializeField] private Vector3 cameraVec;// = Vector3( 7,  10, 8);
+    [SerializeField] private Vector3 cameraRot;// = Vector3(40,-140, 0); 
     
     void Start () {
-        targetObj = GameObject.Find("Player");
-        targetPos = targetObj.transform.position;
+        playerObj = GameObject.Find("Player");
+        playerController = playerObj.GetComponent<PlayerController>();
+
+        playerPos = playerObj.transform.position;
     }
     
     void Update() {
         // targetの移動量分、自分（カメラ）も移動する
-        transform.position += targetObj.transform.position - targetPos;
-        targetPos = targetObj.transform.position;
+        transform.position += playerObj.transform.position - playerPos;
+        playerPos = playerObj.transform.position;
     
-        // マウスの右クリックを押している間
-        //if (Input.GetMouseButton(1)) {
+        if(playerController.GetAimFrag())
+        {
+            float mouseInputX = Input.GetAxis("Mouse X");
+            float mouseInputY = Input.GetAxis("Mouse Y");
+            // targetの位置のY軸を中心に、回転（公転）する
+            transform.RotateAround(playerPos, Vector3.up, mouseInputX * Time.deltaTime * 500f);
+            // カメラの垂直移動（※角度制限なし、必要が無ければコメントアウト）
+            transform.RotateAround(playerPos, transform.right, mouseInputY * Time.deltaTime * 500f);
+        }
+        else{ // 通常時
             // マウスの移動量
             float mouseInputX = Input.GetAxis("Mouse X");
             //float mouseInputY = Input.GetAxis("Mouse Y");
             // targetの位置のY軸を中心に、回転（公転）する
-            transform.RotateAround(targetPos, Vector3.up, mouseInputX * Time.deltaTime * 500f);
+            transform.RotateAround(playerPos, Vector3.up, mouseInputX * Time.deltaTime * 500f);
             // カメラの垂直移動（※角度制限なし、必要が無ければコメントアウト）
-            //transform.RotateAround(targetPos, transform.right, mouseInputY * Time.deltaTime * 200f);
-        //}
+            //transform.RotateAround(targetPos, transform.right, mouseInputY * Time.deltaTime * 500f);
+        }
     } 
 
 
