@@ -79,6 +79,8 @@ public class Absorption : MonoBehaviour
            // junkPos.y += (playerPos.y - junkPos.y) * moveVelocity;
            // junkPos.z += (playerPos.z - junkPos.z) * moveVelocity;
            // transform.position = junkPos;
+
+           
         }
     }
 
@@ -90,7 +92,11 @@ public class Absorption : MonoBehaviour
             Debug.Log("Cleaner hit");
             isActive = true;
         }
-        else
+    }
+
+    void OnTriggerExit(Collider col)
+    {
+        if(col.gameObject.CompareTag("Cleaner"))
         {
             Debug.Log("Cleaner not hit");
             isActive = false;
