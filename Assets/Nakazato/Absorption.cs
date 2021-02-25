@@ -82,16 +82,7 @@ public class Absorption : MonoBehaviour
         }
     }
 
-    // 吸い込み後の処理 
-    void OnCollisionEnter(Collision col)
-    {
-        if (col.gameObject.CompareTag("Player") && playerController.GetAbsorption())
-        { // ガラクタを破壊
-            Debug.Log("Destroy : cube");
-            Destroy(this.gameObject);
-        }
-    }
-
+    // 吸い込み判定
     void OnTriggerStay(Collider col)
     {
         if(col.gameObject.CompareTag("Cleaner"))
@@ -105,4 +96,15 @@ public class Absorption : MonoBehaviour
             isActive = false;
         }
     }
+
+    // 吸い込み後の処理 
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.CompareTag("Player") && playerController.GetAbsorption())
+        { // ガラクタを破壊
+            Debug.Log("Destroy : cube");
+            Destroy(this.gameObject);
+        }
+    }
+
 }

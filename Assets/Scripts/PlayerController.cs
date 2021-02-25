@@ -26,12 +26,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
+        //horizontal = Input.GetAxis("Horizontal");
+        //vertical = Input.GetAxis("Vertical");
 
-        rig.transform.Translate(Vector3.forward * vertical * moveSpeed * Time.deltaTime);
-        rig.transform.Translate(Vector3.right * horizontal * moveSpeed * Time.deltaTime);
+        //rig.transform.Translate(Vector3.forward * vertical * moveSpeed * Time.deltaTime);
+        //rig.transform.Translate(Vector3.right * horizontal * moveSpeed * Time.deltaTime);
 
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
+ 
         // Jump
         if (Input.GetButtonDown("Jump"))
         {
@@ -56,7 +59,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void FixedUpdate() {
+    void FixedUpdate() {
         // カメラの方向から、X-Z平面の単位ベクトルを取得
         Vector3 cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
     
@@ -68,10 +71,11 @@ public class PlayerController : MonoBehaviour
     
         // キャラクターの向きを進行方向に
         if (moveForward != Vector3.zero)
-         {
+        {
             transform.rotation = Quaternion.LookRotation(moveForward);
-         }
+        }
     }
+
 
     private void OnCollisionEnter(Collision other)
     {
