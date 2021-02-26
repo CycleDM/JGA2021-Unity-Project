@@ -41,46 +41,46 @@ public class Absorption : MonoBehaviour
         // あえて正規化していない
         if(playerController.GetAbsorption() && isActive)
         {
-            playerPos = playerObj.transform.position;
-            junkPos = transform.position;
-    
-            if (playerPos.x > junkPos.x)
-            {
-                junkPos.x = junkPos.x + moveVelocity;
-            }
-            else if (playerPos.x < junkPos.x)
-            {
-                junkPos.x = junkPos.x - moveVelocity;
-            }
-    
-            if (playerPos.y > junkPos.y)
-            {
-                junkPos.y = junkPos.y + moveVelocity;
-            }
-            else if (playerPos.y < junkPos.y)
-            {
-                junkPos.y = junkPos.y - moveVelocity;
-            }
+//            playerPos = playerObj.transform.position;
+//            junkPos = transform.position;
+//    
+//            if (playerPos.x > junkPos.x)
+//            {
+//                junkPos.x = junkPos.x + moveVelocity;
+//            }
+//            else if (playerPos.x < junkPos.x)
+//            {
+//                junkPos.x = junkPos.x - moveVelocity;
+//            }
+//    
+//            if (playerPos.y > junkPos.y)
+//            {
+//                junkPos.y = junkPos.y + moveVelocity;
+//            }
+//            else if (playerPos.y < junkPos.y)
+//            {
+//                junkPos.y = junkPos.y - moveVelocity;
+//            }
+//
+//            if (playerPos.z > junkPos.z)
+//            {
+//                junkPos.z = junkPos.z + moveVelocity;
+//            }
+//            else if (playerPos.z < junkPos.z)
+//            {
+//                junkPos.z = junkPos.z - moveVelocity;
+//            }
+//    
+//            transform.position = junkPos;
 
-            if (playerPos.z > junkPos.z)
-            {
-                junkPos.z = junkPos.z + moveVelocity;
-            }
-            else if (playerPos.z < junkPos.z)
-            {
-                junkPos.z = junkPos.z - moveVelocity;
-            }
-    
-            transform.position = junkPos;
 
+           playerPos = playerObj.transform.position;
+           junkPos = transform.position;
 
-           //playerPos = playerObj.transform.position;
-           //junkPos = transform.position;
-
-           //junkPos.x += (playerPos.x - junkPos.x) * moveVelocity;
-           //junkPos.y += (playerPos.y - junkPos.y) * moveVelocity;
-           //junkPos.z += (playerPos.z - junkPos.z) * moveVelocity;
-           //transform.position = junkPos;
+           junkPos.x += (playerPos.x - junkPos.x) * moveVelocity;
+           junkPos.y += (playerPos.y - junkPos.y) * moveVelocity;
+           junkPos.z += (playerPos.z - junkPos.z) * moveVelocity;
+           transform.position = junkPos;
 
            
         }

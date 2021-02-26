@@ -48,7 +48,6 @@ public class PlayerController : MonoBehaviour
         }
 
         // 吸い込み
-        // 右クリック
         if (Input.GetKey(KeyCode.R))
         {
             Debug.Log("Press.R true");
@@ -61,7 +60,6 @@ public class PlayerController : MonoBehaviour
         }
 
         // aim
-        // 左クリック
         if (Input.GetKey(KeyCode.Q))
         {
             Debug.Log("Press.Q true");
