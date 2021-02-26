@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - interactable
+  - rubbish
+  - resource
+  - pickup
+  - reccycle
+  - enter
   layers:
   - Default
   - TransparentFX
