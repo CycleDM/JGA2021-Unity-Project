@@ -11,7 +11,7 @@ public class Absorption : MonoBehaviour
     [SerializeField] private Vector3 junkPos;
 
     // 吸収速度
-    [SerializeField] private float moveVelocity = 0.005f;
+    [SerializeField] private float moveVelocity;
 
     [SerializeField] private GameObject cleanerObj;
 
@@ -38,6 +38,7 @@ public class Absorption : MonoBehaviour
     void Update()
     {
         // true
+        // あえて正規化していない
         if(playerController.GetAbsorption() && isActive)
         {
             playerPos = playerObj.transform.position;
