@@ -21,6 +21,14 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
+    private void Update() 
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
+    
     private void FixedUpdate()
     {
         center = new Vector3(rotationTarget.transform.position.x, this.transform.position.y, rotationTarget.transform.position.z);
