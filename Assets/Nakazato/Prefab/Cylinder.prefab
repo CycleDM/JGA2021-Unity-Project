@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7814578039005288910}
   m_Layer: 0
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: Junk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,3 +130,5 @@ MonoBehaviour:
   moveVelocity: 0.01
   cleanerObj: {fileID: 0}
   isActive: 0
+  junkSize: 3
+  junkPoint: 5

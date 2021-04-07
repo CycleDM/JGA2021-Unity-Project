@@ -18,6 +18,8 @@ public class Absorption : MonoBehaviour
     [SerializeField] private bool isActive = false;
 
 
+    [SerializeField] private int junkSize;
+    [SerializeField] private int junkPoint;
 
     // Start is called before the first frame update
     void Start()
@@ -32,13 +34,13 @@ public class Absorption : MonoBehaviour
         cleanerObj = GameObject.FindWithTag("Cleaner");
 
         isActive = false;
+
     }
 
     // Update is called once per frame
     void Update()
     {
         // true
-        // あえて正規化していない
         if(playerController.GetAbsorption() && isActive)
         {
 //            playerPos = playerObj.transform.position;
@@ -90,7 +92,7 @@ public class Absorption : MonoBehaviour
     // 吸い込み判定(true)
     void OnTriggerStay(Collider col)
     {
-        if(col.gameObject.CompareTag("Cleaner"))
+        if(col.gameObject.CompareTag("Cleaner") && junkSize <= playerController.GetAbilityLV())
         {
             Debug.Log("Cleaner hit");
             isActive = true;
@@ -99,7 +101,7 @@ public class Absorption : MonoBehaviour
     // 吸い込み判定(false)
     void OnTriggerExit(Collider col)
     {
-        if(col.gameObject.CompareTag("Cleaner"))
+        if(col.gameObject.CompareTag("Cleaner") && junkSize <= playerController.GetAbilityLV())
         {
             Debug.Log("Cleaner not hit");
             isActive = false;
@@ -109,11 +111,18 @@ public class Absorption : MonoBehaviour
     // 吸い込み後の処理 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.CompareTag("Player") && playerController.GetAbsorption())
+        if (col.gameObject.CompareTag("Player") &&
+         junkSize <= playerController.GetAbilityLV() && playerController.GetAbsorption())
         { // ガラクタを破壊
+            playerController.SetAbilityLV(junkPoint);
             Debug.Log("Destroy : cube");
             Destroy(this.gameObject);
         }
+    }
+
+    public int GetJunkPoints()
+    {
+        return junkPoint;
     }
 
 }

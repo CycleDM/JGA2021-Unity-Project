@@ -16,12 +16,20 @@ public class PlayerController : MonoBehaviour
     private float vertical = 0f;
     private bool isAim = false;
 
+    
+    [SerializeField] private int playerLv; // =1
+    private int abilityScore;
+
+
     // Start is called before the first frame update
     private void Start()
     {
         rig = GetComponent<Rigidbody>();
         isAbsorption = false;
         isAim = false;
+
+        playerLv = 1;
+        abilityScore = 0;
     }
 
     // Update is called once per frame
@@ -58,6 +66,14 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Press.R false");
             isAbsorption = false;
         }
+
+        if(abilityScore > 100)
+        {
+            abilityScore = 0;
+            playerLv++;
+            if(playerLv > 9)playerLv = 9;
+        }
+
 
         // aim
         if (Input.GetKey(KeyCode.Q))
@@ -104,5 +120,15 @@ public class PlayerController : MonoBehaviour
     public bool GetAimFrag()
     {
         return isAim;
+    }
+
+    public int GetAbilityLV()
+    {
+        return playerLv;
+    }
+
+    public void SetAbilityLV(int i)
+    {
+        abilityScore += i;
     }
 }
