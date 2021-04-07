@@ -131,4 +131,4 @@ MonoBehaviour:
   cleanerObj: {fileID: 0}
   isActive: 0
   junkSize: 3
-  junkPoint: 5
+  junkPoint: 3
