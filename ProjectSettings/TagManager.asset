@@ -4,8 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - PT Safty Ball
-  - PT Dangerous Ball
+  - Junk
+  - Cleaner
+  - Nose
+  - Pivot
   layers:
   - Default
   - TransparentFX
