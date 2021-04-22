@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneChanger : MonoBehaviour
 {
     public string sceneName;
+    public bool sceneFlag;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,10 +16,21 @@ public class SceneChanger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.KeypadEnter))
+        if(sceneFlag)
         {
+            sceneFlag = false;
               SceneManager.LoadScene(sceneName);
         }
         
+    }
+
+    public bool GetSceneChange()
+    {
+        return sceneFlag;
+    }
+
+    public void SetSceneChange(bool flag)
+    {
+        sceneFlag = flag;
     }
 }

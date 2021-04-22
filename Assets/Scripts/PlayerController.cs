@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     private float vertical = 0f;
     private bool isAim = false;
 
+    public SceneChanger sceneChanger;
+
     
     [SerializeField] private int playerLv; // =1
     private int abilityScore;
@@ -30,17 +32,13 @@ public class PlayerController : MonoBehaviour
 
         playerLv = 1;
         abilityScore = 0;
+        Cursor.lockState = CursorLockMode.Locked; //カーソルを消す
     }
 
     // Update is called once per frame
     private void Update()
     {
-        //horizontal = Input.GetAxis("Horizontal");
-        //vertical = Input.GetAxis("Vertical");
-
-        //rig.transform.Translate(Vector3.forward * vertical * moveSpeed * Time.deltaTime);
-        //rig.transform.Translate(Vector3.right * horizontal * moveSpeed * Time.deltaTime);
-
+       
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
 
@@ -56,14 +54,12 @@ public class PlayerController : MonoBehaviour
         }
 
         // 吸い込み
-        if (Input.GetKey(KeyCode.R))
+        if (Input.GetMouseButton(0))
         {
-            Debug.Log("Press.R true");
             isAbsorption = true;
         }
         else
         {
-            Debug.Log("Press.R false");
             isAbsorption = false;
         }
 
@@ -76,15 +72,19 @@ public class PlayerController : MonoBehaviour
 
 
         // aim
-        if (Input.GetKey(KeyCode.Q))
+        if (Input.GetMouseButton(1))
         {
-            Debug.Log("Press.Q true");
             isAim = true;
         }
         else
         {
-            Debug.Log("Press.Q false");
             isAim = false;
+        }
+
+         if (Input.GetKey(KeyCode.Z))
+        {
+            sceneChanger.SetSceneChange(true);
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 
@@ -104,6 +104,18 @@ public class PlayerController : MonoBehaviour
         {
             transform.rotation = Quaternion.LookRotation(moveForward);
         }
+
+        //AIM時にカメラの向きにキャラが向くように
+        if(GetAimFrag())
+        {
+            Quaternion Q;   
+            Q = Quaternion.LookRotation(Camera.main.transform.forward);
+            Q.x = 0;
+            Q.z = 0;
+            transform.rotation = Q;
+           
+        }
+        
     }
 
 
