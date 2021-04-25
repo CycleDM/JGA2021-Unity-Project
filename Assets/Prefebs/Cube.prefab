@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7763529437468718159}
   - component: {fileID: 7763529437468718158}
   - component: {fileID: 7763529437468718153}
-  - component: {fileID: 7763529437468718146}
+  - component: {fileID: 2615387253255488420}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Junk
@@ -111,7 +111,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7763529437468718146
+--- !u!114 &2615387253255488420
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,14 +120,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7763529437468718152}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44c3f1f7aad53cf4480bd3b241518957, type: 3}
+  m_Script: {fileID: 11500000, guid: b2a47f2eb43d4714e9622b3f217e5589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObj: {fileID: 0}
-  playerPos: {x: 0, y: 0, z: 0}
-  junkPos: {x: 0, y: 0, z: 0}
-  moveVelocity: 0.05
-  cleanerObj: {fileID: 0}
-  isActive: 0
-  junkSize: 1
-  junkPoint: 2
+  junkScale: {x: 0, y: 0, z: 0}
+  junkLv: 1
+  junkPoint: 1

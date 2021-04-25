@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     private bool isAim = false;
 
     
-    [SerializeField] private int playerLv; // =1
+    private int playerLv; // =1
     private int abilityScore;
 
 

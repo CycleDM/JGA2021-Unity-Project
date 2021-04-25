@@ -2,50 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-internal enum VibrateType
-{
-    VERTICAL,
-    HORIZONTAL
-}
 public class Absorption : MonoBehaviour
 {
     // プレイヤークラスの取得
     private PlayerController playerController;
-    [SerializeField] private GameObject playerObj;
-    [SerializeField] private Vector3 playerPos;
-    [SerializeField] private Vector3 junkPos;
-    [SerializeField] private Vector3 junkScale;
+    private GameObject playerObj;
+    private Vector3 playerPos;
+    private Vector3 junkPos;
 
     // 吸収速度
-    [SerializeField] private float moveVelocity;
+    private float moveVelocity;
 
-    [SerializeField] private GameObject cleanerObj;
+    private GameObject cleanerObj;
 
-    [SerializeField] private bool isColActive = false;
+    private bool isColActive = false;
 
 
-    [SerializeField] private int junkSize;
+    [SerializeField] private int junkLv;
     [SerializeField] private int junkPoint;
 
     private int frameMax;
     private int frameCnt = 0;
 
-
-/////
-    [SerializeField] private float speed = 0.1f;
-    [SerializeField] private float maxAngle = 0.1f;
-
-    float startTime;
-    Quaternion startRotation;
-/////
-    [SerializeField] private VibrateType vibrateType;          //振動タイプ
-    [Range(0, 1)] [SerializeField] private float vibrateRange; //振動幅
-    [SerializeField] private float vibrateSpeed;               //振動速度
-    private float initPosition;   //初期ポジション
-    private float newPosition;    //新規ポジション
-    private float minPosition;    //ポジションの下限
-    private float maxPosition;    //ポジションの上限
-    private bool directionToggle; //振動方向の切り替え用トグル(オフ：値が小さくなる方向へ オン：値が大きくなる方向へ)
+    //private float velocity;
 
     // Start is called before the first frame update
     void Start()
@@ -61,65 +40,56 @@ public class Absorption : MonoBehaviour
 
         isColActive = false;
 
-        moveVelocity = 0.1f;
-
-        switch(junkSize){
+        switch(junkLv){
             case 1:
             frameMax = 0;
+            moveVelocity = 0.1f;
             break;
 
             case 2:
             frameMax = 30;
+            moveVelocity = 0.1f;
             break;
 
             case 3:
             frameMax = 60*2;
+            moveVelocity = 0.05f;
             break;
 
             case 4:
             frameMax = 60*3;
+            moveVelocity = 0.05f;
             break;
 
             case 5:
             frameMax = 60*4;
+            moveVelocity = 0.01f;
             break;
 
             case 6:
             frameMax = 60*5;
+            moveVelocity = 0.01f;
             break;
 
             case 7:
             frameMax = 60*6;
+            moveVelocity = 0.001f;
             break;
 
             case 8:
             frameMax = 60*7;
+            moveVelocity = 0.001f;
             break;
 
             case 9:
             frameMax = 60*8;
+            moveVelocity = 0.001f;
             break;
 
             default:break;
         }
 
-        startTime = Time.time;
-        startRotation = transform.rotation;
-
-        //初期ポジションの設定を振動タイプ毎に分ける
-        switch (this.vibrateType) {
-            case VibrateType.VERTICAL:
-                this.initPosition = transform.localPosition.y;
-                break;
-            case VibrateType.HORIZONTAL:
-                this.initPosition = transform.localPosition.x;
-                break;
-        }
-
-            this.newPosition = this.initPosition;
-            this.minPosition = this.initPosition - this.vibrateRange;
-            this.maxPosition = this.initPosition + this.vibrateRange;
-            this.directionToggle = false;
+        //velocity = 0.05f;
 
     }
 
@@ -129,48 +99,21 @@ public class Absorption : MonoBehaviour
         // true
         if(playerController.GetAbsorption() && isColActive)
         {
-            if(frameCnt <= frameMax)
-            {
-                frameCnt++;
-                // ここでオブジェクトを震わせる
-                Vibrate();
+            frameCnt++;
+            Vibrate();
 
-            }
-            else if(frameCnt >= frameMax)
+            if(frameCnt >= frameMax)
             {
                 frameCnt = frameMax;
-//                playerPos = playerObj.transform.position;
-//                junkPos = transform.position;
-//        
-//                if (playerPos.x > junkPos.x)
-//                {
-//                    junkPos.x = junkPos.x + moveVelocity;
-//                }
-//                else if (playerPos.x < junkPos.x)
-//                {
-//                    junkPos.x = junkPos.x - moveVelocity;
-//                }
-//        
-//                if (playerPos.y > junkPos.y)
-//                {
-//                    junkPos.y = junkPos.y + moveVelocity;
-//                }
-//                else if (playerPos.y < junkPos.y)
-//                {
-//                    junkPos.y = junkPos.y - moveVelocity;
-//                }
-//    
-//                if (playerPos.z > junkPos.z)
-//                {
-//                    junkPos.z = junkPos.z + moveVelocity;
-//                }
-//                else if (playerPos.z < junkPos.z)
-//                {
-//                    junkPos.z = junkPos.z - moveVelocity;
-//                }
-//        
-//                transform.position = junkPos;    
-    
+
+                if(junkLv < 7)
+                {
+                    // 回転 
+                    // lv7以下のみ。scaleがでかいと他のオブジェクトを吹っ飛ばしてしまうため
+                    int randRot = 30;
+                    transform.Rotate(new Vector3(Random.Range(randRot * -1, randRot * 1), Random.Range(randRot * -1, randRot * 1), Random.Range(randRot * -1, randRot * 1))); 
+                }
+
                 playerPos = playerObj.transform.position;
                 junkPos = transform.position;
 
@@ -187,7 +130,7 @@ public class Absorption : MonoBehaviour
     // 吸い込み判定(true)
     void OnTriggerStay(Collider col)
     {
-        if(col.gameObject.CompareTag("Cleaner") && junkSize <= playerController.GetAbilityLV())
+        if(col.gameObject.CompareTag("Cleaner") && junkLv <= playerController.GetAbilityLV())
         {
             Debug.Log("Cleaner hit");
             isColActive = true;
@@ -196,7 +139,7 @@ public class Absorption : MonoBehaviour
     // 吸い込み判定(false)
     void OnTriggerExit(Collider col)
     {
-        if(col.gameObject.CompareTag("Cleaner") && junkSize <= playerController.GetAbilityLV())
+        if(col.gameObject.CompareTag("Cleaner") && junkLv <= playerController.GetAbilityLV())
         {
             Debug.Log("Cleaner not hit");
             isColActive = false;
@@ -207,40 +150,35 @@ public class Absorption : MonoBehaviour
     void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.CompareTag("Player")
-          && junkSize <= playerController.GetAbilityLV()
+          && junkLv <= playerController.GetAbilityLV()
           && playerController.GetAbsorption()
           && frameCnt >= frameMax)
         {
             // ガラクタを破壊
             playerController.SetAbilityLV(junkPoint);
-            Debug.Log("Destroy : cube");
+            //Debug.Log("Destroy : cube");
             Destroy(this.gameObject);
         }
     }
     private void Vibrate()
     {
-
-        //ポジションが振動幅の範囲を超えた場合、振動方向を切り替える
-        if (this.newPosition <= this.minPosition ||
-            this.maxPosition <= this.newPosition) {
-            this.directionToggle = !this.directionToggle;
+        float velocity;
+        if(junkLv < 7)
+        {
+            velocity = 0.005f;
+        }
+        else
+        {
+            velocity = 0.01f;
         }
 
-        //新規ポジションを設定
-        this.newPosition = this.directionToggle ? 
-            this.newPosition + (vibrateSpeed * Time.deltaTime) :
-            this.newPosition - (vibrateSpeed * Time.deltaTime);
-        this.newPosition = Mathf.Clamp (this.newPosition, this.minPosition, this.maxPosition);
+        float value1 = Random.Range(velocity * -1.0f, velocity * 1.0f);
+        float value2 = Random.Range(velocity * -1.0f, velocity * 1.0f);
 
-        //新規ポジションを代入
-        switch (this.vibrateType) {
-            case VibrateType.VERTICAL:
-                this.transform.localPosition = new Vector3 (0, this.newPosition, 0);
-                break;
-            case VibrateType.HORIZONTAL:
-                this.transform.localPosition = new Vector3 (this.newPosition, 0, 0);
-                break;
-        }
+        Vector3 pos = this.transform.localPosition;
+        pos.x += value1;
+        pos.z += value2;
+        this.transform.localPosition = pos;
     }
 
     public int GetJunkPoints()
