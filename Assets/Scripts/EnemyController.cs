@@ -4,13 +4,13 @@ using UnityEngine;
 using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
-    private NavMeshAgent Enemy;//NavMeshAgent¤òget
-    public GameObject Target;//ÌÜÅªÃÏ
+    private NavMeshAgent Enemy;//NavMeshAgentã‚’get
+    public GameObject Target;//ç›®çš„åœ°
     // Start is called before the first frame update
-    public float FindDis;//Ãµ¤¹ÈÏ°Ï
-    public Transform[] directPoints;//°ÜÆ°ÈÏ°ÏÀßÄê¤¹¤ëÅÀ
-    private int index = 0;//½Û´ÄÍÑµ­Ï¿ÊÑ¿ô
-    public float stopTime = 3f;//Ää»ß»ş´Ö
+    public float FindDis;//æ¢ã™ç¯„å›²
+    public Transform[] directPoints;//ç§»å‹•ç¯„å›²è¨­å®šã™ã‚‹ç‚¹
+    private int index = 0;//å¾ªç’°ç”¨è¨˜éŒ²å¤‰æ•°
+    public float stopTime = 3f;//åœæ­¢æ™‚é–“
     private float timer = 0;
     private float a;
     void Awake()
@@ -23,7 +23,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float dis = Vector3.Distance(transform.position,Target.transform.position);//enemy¤ÈÌÜÅªÃÏ¤Îµ÷Î¥
+        float dis = Vector3.Distance(transform.position,Target.transform.position);//enemyã¨ç›®çš„åœ°ã®è·é›¢
 
 
     if (Enemy.remainingDistance < 2.0f)
@@ -43,13 +43,13 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-        if(dis <= FindDis)//ÌÜÅªÃÏ¤ÏÃµ¤¹ÈÏ°ÏÆâ
+        if(dis <= FindDis)//ç›®çš„åœ°ã¯æ¢ã™ç¯„å›²å†…
         {
             if(gameObject.tag == "Dog")
             {
-                if(Target != null)//ÌÜÅªÃÏ¤¬Â¸ºß¤¹¤ë¾ì¹ç
+                if(Target != null)//ç›®çš„åœ°ãŒå­˜åœ¨ã™ã‚‹å ´åˆ
                 {
-                    Enemy.destination = Target.transform.position;//ÌÜÅªÃÏ¤Ø°ÜÆ°¤¹¤ë
+                    Enemy.destination = Target.transform.position;//ç›®çš„åœ°ã¸ç§»å‹•ã™ã‚‹
                 }
 
             }

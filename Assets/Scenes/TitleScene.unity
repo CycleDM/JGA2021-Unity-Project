@@ -145,7 +145,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 14605828}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.09, y: 7.83, z: 0.29}
+  m_LocalPosition: {x: -0.09, y: 7.83, z: 0.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2120039130}
@@ -275,7 +275,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 383833854}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.44, z: -2.61}
+  m_LocalPosition: {x: 0, y: 2.18, z: -4.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -350,7 +350,7 @@ PrefabInstance:
     - target: {fileID: 7234059910076940722, guid: 71313441f46d8bd4db5bd15d6e6ac0b0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.48
+      value: -1.05
       objectReference: {fileID: 0}
     - target: {fileID: 7234059910076940722, guid: 71313441f46d8bd4db5bd15d6e6ac0b0,
         type: 3}
@@ -433,7 +433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50c2d9948b2e1b44a8d1e3a82075fe72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: SampleScene
+  sceneName: GameScene
   sceneFlag: 0
 --- !u!4 &426953765
 Transform:
@@ -544,7 +544,7 @@ Transform:
   m_GameObject: {fileID: 628152344}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -933,7 +933,7 @@ PrefabInstance:
     - target: {fileID: 7234059910076940722, guid: 71313441f46d8bd4db5bd15d6e6ac0b0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.48
+      value: -1.36
       objectReference: {fileID: 0}
     - target: {fileID: 7234059910076940722, guid: 71313441f46d8bd4db5bd15d6e6ac0b0,
         type: 3}
@@ -978,7 +978,7 @@ PrefabInstance:
     - target: {fileID: 7234059910076940725, guid: 71313441f46d8bd4db5bd15d6e6ac0b0,
         type: 3}
       propertyPath: maxNumOfJunks
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7234059910076940725, guid: 71313441f46d8bd4db5bd15d6e6ac0b0,
         type: 3}
@@ -1038,7 +1038,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 444130cd99430fa459da3aed321db492, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

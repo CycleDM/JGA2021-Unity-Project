@@ -14,7 +14,7 @@ public class MapGenerator : MonoBehaviour
         //buildings.transform.parent = GameObject.Find("Ground").transform;
         //buildings.transform.localPosition = new Vector3(-4f,0f,4f);
         
-        float offset = 3.5f;
+        float offset = 3f;
         for (int i = 0; i < 8; i++)
         {
             GameObject buildings = null;
