@@ -6,21 +6,25 @@ public class Absorption : MonoBehaviour
 {
     // プレイヤークラスの取得
     private PlayerController playerController;
-    [SerializeField] private GameObject playerObj;
-    [SerializeField] private Vector3 playerPos;
-    [SerializeField] private Vector3 junkPos;
+    private GameObject playerObj;
+    private Vector3 playerPos;
+    private Vector3 junkPos;
 
     // 吸収速度
-    [SerializeField] private float moveVelocity;
+    private float moveVelocity;
 
-    [SerializeField] private GameObject cleanerObj;
+    private GameObject cleanerObj;
 
-    [SerializeField] private bool isActive = false;
+    private bool isColActive = false;
 
 
-    [SerializeField] private int junkSize;
+    [SerializeField] private int junkLv;
     [SerializeField] private int junkPoint;
 
+    private int frameMax;
+    private int frameCnt = 0;
+
+    //private float velocity;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +37,58 @@ public class Absorption : MonoBehaviour
 
         cleanerObj = GameObject.FindWithTag("Cleaner");
 
-        isActive = false;
+        isColActive = false;
+
+        switch(junkLv){
+            case 1:
+            frameMax = 0;
+            moveVelocity = 0.1f;
+            break;
+
+            case 2:
+            frameMax = 30;
+            moveVelocity = 0.1f;
+            break;
+
+            case 3:
+            frameMax = 60*2;
+            moveVelocity = 0.05f;
+            break;
+
+            case 4:
+            frameMax = 60*3;
+            moveVelocity = 0.05f;
+            break;
+
+            case 5:
+            frameMax = 60*4;
+            moveVelocity = 0.01f;
+            break;
+
+            case 6:
+            frameMax = 60*5;
+            moveVelocity = 0.01f;
+            break;
+
+            case 7:
+            frameMax = 60*6;
+            moveVelocity = 0.001f;
+            break;
+
+            case 8:
+            frameMax = 60*7;
+            moveVelocity = 0.001f;
+            break;
+
+            case 9:
+            frameMax = 60*8;
+            moveVelocity = 0.001f;
+            break;
+
+            default:break;
+        }
+
+        //velocity = 0.05f;
 
     }
 
@@ -41,50 +96,32 @@ public class Absorption : MonoBehaviour
     void Update()
     {
         // true
-        if(playerController.GetAbsorption() && isActive)
+        if(playerController.GetAbsorption() && isColActive)
         {
-//            playerPos = playerObj.transform.position;
-//            junkPos = transform.position;
-//    
-//            if (playerPos.x > junkPos.x)
-//            {
-//                junkPos.x = junkPos.x + moveVelocity;
-//            }
-//            else if (playerPos.x < junkPos.x)
-//            {
-//                junkPos.x = junkPos.x - moveVelocity;
-//            }
-//    
-//            if (playerPos.y > junkPos.y)
-//            {
-//                junkPos.y = junkPos.y + moveVelocity;
-//            }
-//            else if (playerPos.y < junkPos.y)
-//            {
-//                junkPos.y = junkPos.y - moveVelocity;
-//            }
-//
-//            if (playerPos.z > junkPos.z)
-//            {
-//                junkPos.z = junkPos.z + moveVelocity;
-//            }
-//            else if (playerPos.z < junkPos.z)
-//            {
-//                junkPos.z = junkPos.z - moveVelocity;
-//            }
-//    
-//            transform.position = junkPos;
+            frameCnt++;
+            Vibrate();
 
+            if(frameCnt >= frameMax)
+            {
+                frameCnt = frameMax;
 
-           playerPos = playerObj.transform.position;
-           junkPos = transform.position;
+                if(junkLv < 7)
+                {
+                    // 回転 
+                    // lv7以下のみ。scaleがでかいと他のオブジェクトを吹っ飛ばしてしまうため
+                    int randRot = 30;
+                    transform.Rotate(new Vector3(Random.Range(randRot * -1, randRot * 1), Random.Range(randRot * -1, randRot * 1), Random.Range(randRot * -1, randRot * 1))); 
+                }
 
-           junkPos.x += (playerPos.x - junkPos.x) * moveVelocity;
-           junkPos.y += (playerPos.y - junkPos.y) * moveVelocity;
-           junkPos.z += (playerPos.z - junkPos.z) * moveVelocity;
-           transform.position = junkPos;
+                playerPos = playerObj.transform.position;
+                junkPos = transform.position;
 
-           
+                junkPos.x += (playerPos.x - junkPos.x) * moveVelocity;
+                junkPos.y += (playerPos.y - junkPos.y) * moveVelocity;
+                junkPos.z += (playerPos.z - junkPos.z) * moveVelocity;
+                transform.position = junkPos;
+
+            }
         }
     }
 
@@ -92,32 +129,55 @@ public class Absorption : MonoBehaviour
     // 吸い込み判定(true)
     void OnTriggerStay(Collider col)
     {
-        if(col.gameObject.CompareTag("Cleaner") && junkSize <= playerController.GetAbilityLV())
+        if(col.gameObject.CompareTag("Cleaner") && junkLv <= playerController.GetAbilityLV())
         {
             Debug.Log("Cleaner hit");
-            isActive = true;
+            isColActive = true;
         }
     }
     // 吸い込み判定(false)
     void OnTriggerExit(Collider col)
     {
-        if(col.gameObject.CompareTag("Cleaner") && junkSize <= playerController.GetAbilityLV())
+        if(col.gameObject.CompareTag("Cleaner") && junkLv <= playerController.GetAbilityLV())
         {
             Debug.Log("Cleaner not hit");
-            isActive = false;
+            isColActive = false;
         }
     }
 
     // 吸い込み後の処理 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.CompareTag("Player") &&
-         junkSize <= playerController.GetAbilityLV() && playerController.GetAbsorption())
-        { // ガラクタを破壊
+        if (col.gameObject.CompareTag("Player")
+          && junkLv <= playerController.GetAbilityLV()
+          && playerController.GetAbsorption()
+          && frameCnt >= frameMax)
+        {
+            // ガラクタを破壊
             playerController.SetAbilityLV(junkPoint);
-            Debug.Log("Destroy : cube");
+            //Debug.Log("Destroy : cube");
             Destroy(this.gameObject);
         }
+    }
+    private void Vibrate()
+    {
+        float velocity;
+        if(junkLv < 7)
+        {
+            velocity = 0.005f;
+        }
+        else
+        {
+            velocity = 0.01f;
+        }
+
+        float value1 = Random.Range(velocity * -1.0f, velocity * 1.0f);
+        float value2 = Random.Range(velocity * -1.0f, velocity * 1.0f);
+
+        Vector3 pos = this.transform.localPosition;
+        pos.x += value1;
+        pos.z += value2;
+        this.transform.localPosition = pos;
     }
 
     public int GetJunkPoints()

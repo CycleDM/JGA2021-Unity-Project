@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     public SceneChanger sceneChanger;
 
     
-    [SerializeField] private int playerLv; // =1
+    private int playerLv; // =1
     private int abilityScore;
 
 
