@@ -14,6 +14,7 @@ public class MapGenerator : MonoBehaviour
         //buildings.transform.parent = GameObject.Find("Ground").transform;
         //buildings.transform.localPosition = new Vector3(-4f,0f,4f);
         
+        float offset = 3.5f;
         for (int i = 0; i < 8; i++)
         {
             GameObject buildings = null;
@@ -35,15 +36,15 @@ public class MapGenerator : MonoBehaviour
 
             if ( i < 3)
             {
-                buildings.transform.localPosition = new Vector3(-4f + i * 4f,0f,4f);
+                buildings.transform.localPosition = new Vector3(-offset + i * offset,0f,offset);
             }
             if ( i == 3 || i == 4)
             {
-                buildings.transform.localPosition = new Vector3(-4f + (i - 3) * 8f,0f,0f);
+                buildings.transform.localPosition = new Vector3(-offset + (i - 3) * offset * 2,0f,0f);
             }
             if ( i > 4)
             {
-                buildings.transform.localPosition = new Vector3(-4f + (i - 5) * 4f,0f,-4f);
+                buildings.transform.localPosition = new Vector3(-offset + (i - 5) * offset,0f,-offset);
             }
         }
         
