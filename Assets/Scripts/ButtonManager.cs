@@ -26,7 +26,7 @@ bool startFlag = false;
     public void OnclickQuit()
     {
         UnityEngine.Application.Quit();
-           UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false;
     }
 
     void Update()
