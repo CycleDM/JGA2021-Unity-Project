@@ -19,7 +19,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4661192863523709071
 Transform:
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4661192863523709109}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.2, y: 5.5, z: 0.4}
+  m_LocalPosition: {x: 1.2, y: 5.5, z: 0.44}
   m_LocalScale: {x: 3, y: 5, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
@@ -123,6 +123,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2a47f2eb43d4714e9622b3f217e5589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  junkScale: {x: 0, y: 0, z: 0}
   junkLv: 7
   junkPoint: 15
