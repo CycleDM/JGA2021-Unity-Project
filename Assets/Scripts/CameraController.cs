@@ -8,7 +8,6 @@ public class CameraController : MonoBehaviour
     private PlayerController playerController;
     private Vector3 playerPos;
 
-    
     void Start () {
         playerObj = GameObject.Find("Player");
         playerController = playerObj.GetComponent<PlayerController>();

@@ -39,7 +39,8 @@ Name          | Branch Name
 薛 岩          | `dev_Soap`
 王 子彬        | `dev_`
 中里 顕之      | `dev_aki`
-福田 幸生      | `dev_`
+福田 幸生      | `dev_fukuda`
+
 
 ### 特殊なブランチ名
 <font color = darkred>**以下のブランチ名はアーカイブ用の重要なブランチ**</font>
