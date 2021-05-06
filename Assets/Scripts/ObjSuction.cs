@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Absorption : MonoBehaviour
+public class ObjSuction : MonoBehaviour
 {
     // プレイヤークラスの取得
     private PlayerController playerController;
