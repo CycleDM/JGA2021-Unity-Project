@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JunkReSpawn : MonoBehaviour
+public class ObjSpawner : MonoBehaviour
 {
     // ガラクタ配列
 	[SerializeField] GameObject[] junks;
