@@ -8,8 +8,6 @@ TagManager:
   - Cleaner
   - Nose
   - Pivot
-  - PT Safty Ball
-  - Dog
   layers:
   - Default
   - TransparentFX
