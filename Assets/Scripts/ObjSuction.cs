@@ -44,53 +44,53 @@ public class ObjSuction : MonoBehaviour
         switch(junkLv){
             case 1:
             frameMax = 0;
-            //moveVelocity = 0.1f;
+            moveVelocity = 0.1f;
             break;
 
             case 2:
             frameMax = 30;
-            //moveVelocity = 0.1f;
+            moveVelocity = 0.1f;
             break;
 
             case 3:
             frameMax = 60*2;
-            //moveVelocity = 0.05f;
+            moveVelocity = 0.1f;
             break;
 
             case 4:
             frameMax = 60*3;
-            //moveVelocity = 0.05f;
+            moveVelocity = 0.1f;
             break;
 
             case 5:
             frameMax = 60*4;
-            //moveVelocity = 0.01f;
+            moveVelocity = 0.1f;
             break;
 
             case 6:
             frameMax = 60*5;
-            //moveVelocity = 0.01f;
+            moveVelocity = 0.1f;
             break;
 
             case 7:
             frameMax = 60*6;
-            //moveVelocity = 0.001f;
+            moveVelocity = 0.01f;
             break;
 
             case 8:
             frameMax = 60*7;
-            //moveVelocity = 0.001f;
+            moveVelocity = 0.01f;
             break;
 
             case 9:
             frameMax = 60*8;
-            //moveVelocity = 0.001f;
+            moveVelocity = 0.01f;
             break;
 
             default:break;
         }
 
-        moveVelocity = 0.1f;
+       // moveVelocity = 0.1f;
 
     }
 
