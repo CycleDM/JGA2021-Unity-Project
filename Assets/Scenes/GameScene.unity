@@ -708,6 +708,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1099562163373621409, guid: 46178aefa96f2cb41affea1828b6bc07,
         type: 3}
+      propertyPath: moveSetSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099562163373621409, guid: 46178aefa96f2cb41affea1828b6bc07,
+        type: 3}
       propertyPath: sceneChanger
       value: 
       objectReference: {fileID: 1125605358}
@@ -1416,6 +1421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 435b0ad3e9fa6dd4fbda58f0131e3b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  viewAngle: 60
 --- !u!1 &1125605356
 GameObject:
   m_ObjectHideFlags: 0
