@@ -10,9 +10,12 @@ public class CameraController : MonoBehaviour
 
     private PlayerController playerController;
 
-    // フィールドを追加して、積算回転角を別途覚えておけるようにしておく
     private float angleH;
     private float angleV;
+
+    private GameObject aimObj;
+    private GameObject startObj;
+
 
     void Start()
     {
@@ -24,6 +27,9 @@ public class CameraController : MonoBehaviour
         targetObj = GameObject.Find("Player");
         targetPos = targetObj.transform.position;
         playerController = targetObj.GetComponent<PlayerController>();
+
+        aimObj = GameObject.Find("Pivot");
+        startObj = GameObject.Find("CameraPos");
     }
 
     void Update()
@@ -32,20 +38,19 @@ public class CameraController : MonoBehaviour
         transform.position += targetObj.transform.position - targetPos;
         targetPos = targetObj.transform.position;
 
-        float inputX;
-        float inputY;
+        float inputX = Input.GetAxis("Mouse X");
+        float inputY = Input.GetAxis("Mouse Y");
+        //SetCameraUpdate(inputX,inputY);
 
         if(playerController.GetAimFrag()) // aim
-        { 
-    
+        {
+            ///
+            //transform.position = Vector3.Lerp(transform.position, aimObj.transform.position, Time.deltaTime * 100.0f);
         }
         else // 通常時
         {
-            // マウスの移動量
-            inputX = Input.GetAxis("Mouse X");
-            inputY = Input.GetAxis("Mouse Y");
-
             SetCameraUpdate(inputX,inputY);
+            //transform.position = Vector3.Lerp(transform.position, startObj.transform.position, Time.deltaTime * 100.0f);
         }
     }
 
