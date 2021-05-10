@@ -21,15 +21,15 @@ public class MapGenerator : MonoBehaviour
             int a = Random.Range(1, 4);
             if (a == 1)
             {
-                buildings = (GameObject)Instantiate(Resources.Load("Prefabs/Map Base/P1"));
+                buildings = (GameObject)Instantiate(Resources.Load("Prefabs/MapBase/P1"));
             }
             if ( a == 2)
             {
-                buildings = (GameObject)Instantiate(Resources.Load("Prefabs/Map Base/P2"));
+                buildings = (GameObject)Instantiate(Resources.Load("Prefabs/MapBase/P2"));
             }
             if ( a == 3)
             {
-                buildings = (GameObject)Instantiate(Resources.Load("Prefabs/Map Base/P3"));
+                buildings = (GameObject)Instantiate(Resources.Load("Prefabs/MapBase/P3"));
             }
             
             buildings.transform.parent = GameObject.Find("Ground").transform;
