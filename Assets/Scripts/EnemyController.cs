@@ -5,59 +5,105 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     private NavMeshAgent Enemy;//NavMeshAgentをget
-    public GameObject Target;//目的地
+    public GameObject Player;//目的地
     // Start is called before the first frame update
-    public float FindDis;//探す範囲
+    private Rigidbody PlayerRb;
     public Transform[] directPoints;//移動範囲設定する点
-    private int index = 0;//循環用記録変数
+    private int index = 0;  //循環用記録変数
     public float stopTime = 3f;//停止時間
     private float timer = 0;
-    private float a;
+
+    private float dis;//enemyと目的地の距離
+    public float FindDis;//探す範囲
+    public float EscapeDis;//逃げる範囲
+    private bool Escape=false;
+    private bool collide = false;
+
+
+        private float m_force;
+
+
+    private Vector3 direction = new Vector3();//敵とプレイヤーのベクトル
+
     void Awake()
     {
-        //Enemy = gameObject.GetComponent<NavMeshAgent>();
+        PlayerRb = Player.GetComponent<Rigidbody>();
         Enemy = GetComponent<NavMeshAgent>();
         Enemy.destination = directPoints[index].position;
+        m_force = Enemy.speed;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        float dis = Vector3.Distance(transform.position,Target.transform.position);//enemyと目的地の距離
-
+        dis = Vector3.Distance(transform.position,Player.transform.position);
 
     if (Enemy.remainingDistance < 2.0f)
     {
-
-
         timer += Time.deltaTime;
-
         if(timer >= stopTime)
         {
-            Debug.Log("123");
             index++;
-            index %= 4;
+            index %=directPoints.Length;
             timer = 0;
             Enemy.destination = directPoints[index].position;
-
         }
     }
+
+        //敵からプレイヤーのベクトルを設定
+        direction = (Player.transform.position-transform.position).normalized;
+        direction.y=0;
+
+        //逃げる、弾き飛ばすの速度
+        direction= direction * m_force*5.0f;
 
         if(dis <= FindDis)//目的地は探す範囲内
         {
             if(gameObject.tag == "Dog")
             {
-                if(Target != null)//目的地が存在する場合
+                if(Player != null)//目的地が存在する場合
                 {
-                    Enemy.destination = Target.transform.position;//目的地へ移動する
+                    Enemy.destination = Player.transform.position;//目的地へ移動する
                 }
+            }
 
+            if(gameObject.tag == "Cat")
+            {
+                Escape = true;
             }
 
         }
-        if(dis >= FindDis)
+        if(dis <= EscapeDis)
         {
-            Debug.Log("123");
+            if(gameObject.tag == "Cat")
+            {
+                if(Escape)
+                {
+                    transform.position -= (direction*Time.deltaTime);//プレイヤーから逃げる
+                }
+            }
+            if(gameObject.tag == "Dog")
+            {
+                if(collide)
+                {
+                PlayerRb.transform.position +=(direction*Time.deltaTime);//プレイヤーを弾き飛ばすパワー
+                }
+            }
+        }
+        if(dis>=EscapeDis)
+        {
+            Escape = false;
+            collide = false;
+        }
+    }
+
+
+    void OnCollisionEnter(Collision ctl)
+    {
+        if(gameObject.tag == "Dog")
+            {
+        collide =true;
         }
     }
 }
+
