@@ -11,6 +11,7 @@ TagManager:
   - Dog
   - PT Safty Ball
   - Cat
+  - CameraPos
   layers:
   - Default
   - TransparentFX

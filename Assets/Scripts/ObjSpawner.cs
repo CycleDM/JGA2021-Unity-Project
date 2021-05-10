@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class ObjSpawner : MonoBehaviour
 {
-    // ガラクタ配列
+	[Header("ガラクタ配列")]
 	[SerializeField] GameObject[] junks;
-	// ガラクタが出現するまでの時間
+
+	[Header("ガラクタが出現するまでの時間")]
 	[SerializeField] float appearNextTime;
-	// 出現するガラクタの数
+
+	[Header("出現するガラクタの数")]
 	[SerializeField] int maxNumOfJunks;
 	// 何個のガラクタを出現させたか（総数）
 	private int numberOfJunks;

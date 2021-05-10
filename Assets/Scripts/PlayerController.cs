@@ -5,12 +5,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody rig;
-    public float moveSpeed = 5;
+    public float moveSetSpeed = 10;
+    private float moveSpeed;
     public float jumpVelocity = 5;
 
     private bool isOnGround = true;
 
-    private bool isAbsorption = false; // 吸収
+    private bool isSuction = false; // 吸収
 
     private float horizontal = 0f;
     private float vertical = 0f;
@@ -27,12 +28,14 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rig = GetComponent<Rigidbody>();
-        isAbsorption = false;
+        isSuction = false;
         isAim = false;
 
         playerLv = 1;
         abilityScore = 0;
         Cursor.lockState = CursorLockMode.Locked; //カーソルを消す
+
+        moveSpeed = moveSetSpeed;
     }
 
     // Update is called once per frame
@@ -53,14 +56,14 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        // 吸い込み
+        // 吸引
         if (Input.GetMouseButton(0))
         {
-            isAbsorption = true;
+            isSuction = true;
         }
         else
         {
-            isAbsorption = false;
+            isSuction = false;
         }
 
         if(abilityScore > 100)
@@ -85,6 +88,24 @@ public class PlayerController : MonoBehaviour
         {
             sceneChanger.SetSceneChange(true);
             Cursor.lockState = CursorLockMode.None;
+        }
+
+        // 速度調整
+        if(!isSuction && !isAim)
+        {
+            moveSpeed = moveSetSpeed;  
+        }
+        else
+        {
+            if(isSuction)
+            {
+                moveSpeed = moveSetSpeed * 0.5f; 
+            }
+
+            if(isAim)
+            {
+                moveSpeed = 0;
+            }
         }
     }
 
@@ -124,9 +145,9 @@ public class PlayerController : MonoBehaviour
         isOnGround = true;
     }
 
-    public bool GetAbsorption()
+    public bool GetSuction()
     {
-        return isAbsorption;
+        return isSuction;
     }
 
     public bool GetAimFrag()
