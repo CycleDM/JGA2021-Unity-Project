@@ -6,7 +6,7 @@ public class ObjSuction : MonoBehaviour
 {
     // プレイヤークラスの取得
     private PlayerController playerController;
-    private GameObject playerObj;
+    private GameObject playerObj = null;
     private Vector3 playerPos;
     private Vector3 junkPos;
 
@@ -32,7 +32,7 @@ public class ObjSuction : MonoBehaviour
     {
         // プレイヤーのタグ取得
         playerObj = GameObject.FindWithTag("Player");
-        playerController = playerObj.GetComponent<PlayerController>();
+        if(playerObj != null) playerController = playerObj.GetComponent<PlayerController>();
 
         playerPos = playerObj.transform.position;
         junkPos = transform.position;
