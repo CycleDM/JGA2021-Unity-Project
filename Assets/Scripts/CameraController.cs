@@ -20,9 +20,9 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         //カーソルをロックする
-        Cursor.lockState = CursorLockMode.Locked;
+//        Cursor.lockState = CursorLockMode.Locked;
         //カーソルを見えなくする
-        Cursor.visible = false;
+//        Cursor.visible = false;
 
         targetObj = GameObject.Find("Player");
         targetPos = targetObj.transform.position;
