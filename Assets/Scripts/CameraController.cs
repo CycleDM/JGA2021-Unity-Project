@@ -30,6 +30,7 @@ public class CameraController : MonoBehaviour
 
         aimObj = GameObject.Find("Pivot");
         startObj = GameObject.Find("CameraPos");
+        transform.position = startObj.transform.position;
     }
 
     void Update()
@@ -44,14 +45,15 @@ public class CameraController : MonoBehaviour
 
         if(playerController.GetAimFrag()) // aim
         {
-            ///
-            //transform.position = Vector3.Lerp(transform.position, aimObj.transform.position, Time.deltaTime * 100.0f);
+            transform.position = Vector3.Lerp(transform.position, aimObj.transform.position, Time.deltaTime * 100.0f);
         }
         else // 通常時
         {
-            SetCameraUpdate(inputX,inputY);
+            //SetCameraUpdate(inputX,inputY);
             //transform.position = Vector3.Lerp(transform.position, startObj.transform.position, Time.deltaTime * 100.0f);
         }
+
+        SetCameraUpdate(inputX,inputY);
     }
 
     private void SetCameraUpdate(float x,float y)

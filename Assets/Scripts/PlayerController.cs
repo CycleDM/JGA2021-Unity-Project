@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
 
 
         // aim
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButtonDown(1))
         {
             isAim = true;
         }
