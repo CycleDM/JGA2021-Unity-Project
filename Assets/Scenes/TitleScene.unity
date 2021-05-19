@@ -663,7 +663,7 @@ GameObject:
   - component: {fileID: 997752361}
   - component: {fileID: 997752360}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Corrider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
