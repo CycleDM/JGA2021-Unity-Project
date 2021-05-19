@@ -45,16 +45,16 @@ public class PlayerController : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
 
-        // Jump
-        if (Input.GetButtonDown("Jump"))
-        {
-            if (isOnGround)
-            {
-                rig.velocity += new Vector3(0, jumpVelocity, 0);
-                //rig.AddForce(Vector3.up * 300);
-                isOnGround = false;
-            }
-        }
+//        // Jump
+//        if (Input.GetButtonDown("Jump"))
+//        {
+//            if (isOnGround)
+//            {
+//                rig.velocity += new Vector3(0, jumpVelocity, 0);
+//                //rig.AddForce(Vector3.up * 300);
+//                isOnGround = false;
+//            }
+//        }
 
         // 吸引
         if (Input.GetMouseButton(0))

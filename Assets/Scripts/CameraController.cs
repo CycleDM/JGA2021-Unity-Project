@@ -19,10 +19,10 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
-        //カーソルをロックする
-//        Cursor.lockState = CursorLockMode.Locked;
+        //カーソルをロック
+        //Cursor.lockState = CursorLockMode.Locked;
         //カーソルを見えなくする
-//        Cursor.visible = false;
+        //Cursor.visible = false;
 
         targetObj = GameObject.Find("Player");
         targetPos = targetObj.transform.position;
@@ -43,15 +43,15 @@ public class CameraController : MonoBehaviour
         float inputY = Input.GetAxis("Mouse Y");
         //SetCameraUpdate(inputX,inputY);
 
-        if(playerController.GetAimFrag()) // aim
-        {
-            transform.position = Vector3.Lerp(transform.position, aimObj.transform.position, Time.deltaTime * 100.0f);
-        }
-        else // 通常時
-        {
-            //SetCameraUpdate(inputX,inputY);
-            //transform.position = Vector3.Lerp(transform.position, startObj.transform.position, Time.deltaTime * 100.0f);
-        }
+        //if(playerController.GetAimFrag()) // aim
+        //{
+        //    transform.position = Vector3.Lerp(transform.position, aimObj.transform.position, Time.deltaTime * 100.0f);
+        //}
+        //else // 通常時
+        //{
+        //    //SetCameraUpdate(inputX,inputY);
+        //    //transform.position = Vector3.Lerp(transform.position, startObj.transform.position, Time.deltaTime * 100.0f);
+        //}
 
         SetCameraUpdate(inputX,inputY);
     }
