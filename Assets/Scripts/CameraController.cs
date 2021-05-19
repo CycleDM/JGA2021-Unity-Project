@@ -28,9 +28,9 @@ public class CameraController : MonoBehaviour
         targetPos = targetObj.transform.position;
         playerController = targetObj.GetComponent<PlayerController>();
 
-        aimObj = GameObject.Find("Pivot");
-        startObj = GameObject.Find("CameraPos");
-        transform.position = startObj.transform.position;
+        //aimObj = GameObject.Find("Pivot");
+        //startObj = GameObject.Find("CameraPos");
+        //transform.position = startObj.transform.position;
     }
 
     void Update()

@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour
     private int playerLv; // =1
     private int abilityScore;
 
+    private Animator animator;
+	private const string isWalk = "isWalk";
+	private const string isRun = "isRun";
 
     // Start is called before the first frame update
     private void Start()
@@ -36,12 +39,33 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked; //カーソルを消す
 
         moveSpeed = moveSetSpeed;
+
+        this.animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     private void Update()
     {
-       
+       	if (Input.GetKey(KeyCode.DownArrow)) {
+			// WaitからRunに遷移する
+			this.animator.SetBool(isRun, true);
+		}
+		else {
+			// RunからWaitに遷移する
+			this.animator.SetBool(isRun, false);
+		}
+
+		// Wait or Run からJumpに切り替える処理
+		// スペースキーを押下している
+		if (Input.GetKey(KeyCode.Space)) {
+			// Wait or RunからJumpに遷移する
+			this.animator.SetBool(isWalk, true);
+		}
+		else {
+			// JumpからWait or Runに遷移する
+			this.animator.SetBool(isWalk, false);
+		}
+
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
 
