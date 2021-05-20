@@ -5,20 +5,27 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     private NavMeshAgent Enemy;//NavMeshAgentをget
+    [Header("プレイヤーを設定")]
+    [Header("敵のスピードはnav mesh agentのなかで設定")]
     public GameObject Player;//目的地
     // Start is called before the first frame update
     private Rigidbody PlayerRb;
+
+    [Header("移動する範囲配列")]
     public Transform[] directPoints;//移動範囲設定する点
     private int index = 0;  //循環用記録変数
+    [Header("どのぐらい時間を待って次の場所へ移動")]
+    [Header("目的地を到着した後、")]
     public float stopTime = 3f;//停止時間
     private float timer = 0;
 
     private float dis;//enemyと目的地の距離
+    [Header("探す範囲の大きさ")]
     public float FindDis;//探す範囲
+    [Header("プレイヤーからどこまで逃げる範囲")]
     public float EscapeDis;//逃げる範囲
     private bool Escape=false;
     private bool collide = false;
-
 
         private float m_force;
 
@@ -79,6 +86,9 @@ public class EnemyController : MonoBehaviour
             {
                 if(Escape)
                 {
+                    transform.rotation = Quaternion.Slerp(transform.rotation,
+                            Quaternion.LookRotation(( transform.position- Player.transform.position )),
+                            m_force* 3* Time.deltaTime);
                     transform.position -= (direction*Time.deltaTime);//プレイヤーから逃げる
                 }
             }
