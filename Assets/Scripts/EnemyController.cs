@@ -5,24 +5,32 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     private NavMeshAgent Enemy;//NavMeshAgentをget
+    [Header("プレイヤーを設定")]
+    [Header("敵のスピードはnav mesh agentのなかで設定")]
     public GameObject Player;//目的地
     // Start is called before the first frame update
     private Rigidbody PlayerRb;
+
+    [Header("移動する範囲配列")]
     public Transform[] directPoints;//移動範囲設定する点
     private int index = 0;  //循環用記録変数
+    [Header("どのぐらい時間を待って次の場所へ移動")]
+    [Header("目的地を到着した後、")]
     public float stopTime = 3f;//停止時間
     private float timer = 0;
 
     private float dis;//enemyと目的地の距離
+    [Header("探す範囲の大きさ")]
     public float FindDis;//探す範囲
+    [Header("プレイヤーからどこまで逃げる範囲")]
     public float EscapeDis;//逃げる範囲
     private bool Escape=false;
     private bool collide = false;
 
+    private float m_speed;
 
-        private float m_force;
-
-
+    [Header("逃げるをプレイヤーの撃退側速度の倍率")]
+    public float m_force = 5.0f;
     private Vector3 direction = new Vector3();//敵とプレイヤーのベクトル
 
     void Awake()
@@ -30,7 +38,7 @@ public class EnemyController : MonoBehaviour
         PlayerRb = Player.GetComponent<Rigidbody>();
         Enemy = GetComponent<NavMeshAgent>();
         Enemy.destination = directPoints[index].position;
-        m_force = Enemy.speed;
+        m_speed = Enemy.speed;
     }
 
     // Update is called once per frame
@@ -55,7 +63,7 @@ public class EnemyController : MonoBehaviour
         direction.y=0;
 
         //逃げる、弾き飛ばすの速度
-        direction= direction * m_force*5.0f;
+        direction= direction * m_speed*m_force;
 
         if(dis <= FindDis)//目的地は探す範囲内
         {
@@ -63,6 +71,9 @@ public class EnemyController : MonoBehaviour
             {
                 if(Player != null)//目的地が存在する場合
                 {
+                    transform.rotation = Quaternion.Slerp(transform.rotation,
+                            Quaternion.LookRotation((Player.transform.position - transform.position)),
+                            m_speed* 5* Time.deltaTime);
                     Enemy.destination = Player.transform.position;//目的地へ移動する
                 }
             }
@@ -79,6 +90,9 @@ public class EnemyController : MonoBehaviour
             {
                 if(Escape)
                 {
+                    transform.rotation = Quaternion.Slerp(transform.rotation,
+                            Quaternion.LookRotation((transform.position- Player.transform.position)),
+                            m_speed* 5* Time.deltaTime);
                     transform.position -= (direction*Time.deltaTime);//プレイヤーから逃げる
                 }
             }
@@ -98,9 +112,9 @@ public class EnemyController : MonoBehaviour
     }
 
 
-    void OnCollisionEnter(Collision ctl)
+    void OnCollisionEnter(Collision player)
     {
-        if(gameObject.tag == "Dog")
+        if(gameObject.tag == "Dog"&&player.gameObject.tag=="Player")
             {
         collide =true;
         }
