@@ -5,6 +5,7 @@ using UnityEngine;
 public class TimeController : MonoBehaviour
 {
     public GameObject ClockHand;
+    public SceneChanger SceneChanger;
     public float LimitedTime = 90f;
     float CurrentTime;
     float TimeCounter = 0f;
@@ -27,7 +28,7 @@ public class TimeController : MonoBehaviour
 
         if(CurrentTime >= LimitedTime)
         {
-
+            SceneChanger.SetSceneChange(true);
         }
     }
 }
