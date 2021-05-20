@@ -525,7 +525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: TitleScene
-  sceneFlag: 1
+  sceneFlag: 0
 --- !u!4 &604245016
 Transform:
   m_ObjectHideFlags: 0
