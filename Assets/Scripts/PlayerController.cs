@@ -18,10 +18,11 @@ public class PlayerController : MonoBehaviour
     private bool isAim = false;
 
     public SceneChanger sceneChanger;
+    public ObjSuction ObjSuction;
 
     
     private int playerLv; // =1
-    private int abilityScore;
+    public static int abilityScore;
 
 
     // Start is called before the first frame update
@@ -69,6 +70,7 @@ public class PlayerController : MonoBehaviour
         if(abilityScore > 100)
         {
             abilityScore = 0;
+            ObjSuction.ResetGaugeRot();
             playerLv++;
             if(playerLv > 9)playerLv = 9;
         }
@@ -163,5 +165,10 @@ public class PlayerController : MonoBehaviour
     public void SetAbilityLV(int i)
     {
         abilityScore += i;
+    }
+
+    public int GetAbilityScore()
+    {
+        return abilityScore;
     }
 }
