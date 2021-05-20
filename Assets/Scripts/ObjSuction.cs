@@ -6,6 +6,7 @@ public class ObjSuction : MonoBehaviour
 {
     // プレイヤークラスの取得
     private PlayerController playerController;
+    private GameObject Axis;
     private GameObject playerObj = null;
     private Vector3 playerPos;
     private Vector3 junkPos;
@@ -33,6 +34,8 @@ public class ObjSuction : MonoBehaviour
         // プレイヤーのタグ取得
         playerObj = GameObject.FindWithTag("Player");
         if(playerObj != null) playerController = playerObj.GetComponent<PlayerController>();
+
+        Axis = GameObject.FindWithTag("Axis");
 
         playerPos = playerObj.transform.position;
         junkPos = transform.position;
@@ -158,6 +161,7 @@ public class ObjSuction : MonoBehaviour
             // ガラクタを破壊
             playerController.SetAbilityLV(junkPoint);
             //Debug.Log("Destroy : cube");
+            Axis.GetComponent<RectTransform>().Rotate(0, 0, junkPoint * 0.9f);
             Destroy(this.gameObject);
         }
     }
@@ -185,6 +189,11 @@ public class ObjSuction : MonoBehaviour
     public int GetJunkPoints()
     {
         return junkPoint;
+    }
+
+    public void ResetGaugeRot()
+    {
+        Axis.GetComponent<RectTransform>().Rotate(0,0,-Axis.GetComponent<RectTransform>().eulerAngles.z);
     }
 
 }

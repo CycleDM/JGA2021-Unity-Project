@@ -12,6 +12,7 @@ TagManager:
   - PT Safty Ball
   - Cat
   - CameraPos
+  - Axis
   layers:
   - Default
   - TransparentFX

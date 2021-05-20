@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     private float moveSpeed;
     public float jumpVelocity = 5;
 
-    private bool isOnGround = true;
+    //private bool isOnGround = true;
 
     private bool isSuction = false; // 吸収
 
@@ -18,11 +18,13 @@ public class PlayerController : MonoBehaviour
     private bool isAim = false;
 
     public SceneChanger sceneChanger;
+    public ObjSuction ObjSuction;
 
     
     private int playerLv; // =1
-    private int abilityScore;
+    public static int abilityScore;
 
+    private Animator animator;
 
     // Start is called before the first frame update
     private void Start()
@@ -36,25 +38,17 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked; //カーソルを消す
 
         moveSpeed = moveSetSpeed;
+
+        this.animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     private void Update()
     {
-       
+
+
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
-
-        // Jump
-        if (Input.GetButtonDown("Jump"))
-        {
-            if (isOnGround)
-            {
-                rig.velocity += new Vector3(0, jumpVelocity, 0);
-                //rig.AddForce(Vector3.up * 300);
-                isOnGround = false;
-            }
-        }
 
         // 吸引
         if (Input.GetMouseButton(0))
@@ -69,13 +63,14 @@ public class PlayerController : MonoBehaviour
         if(abilityScore > 100)
         {
             abilityScore = 0;
+            ObjSuction.ResetGaugeRot();
             playerLv++;
             if(playerLv > 9)playerLv = 9;
         }
 
 
         // aim
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButtonDown(1))
         {
             isAim = true;
         }
@@ -140,10 +135,10 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter(Collision other)
-    {
-        isOnGround = true;
-    }
+    //private void OnCollisionEnter(Collision other)
+    //{
+    //    isOnGround = true;
+    //}
 
     public bool GetSuction()
     {
@@ -163,5 +158,15 @@ public class PlayerController : MonoBehaviour
     public void SetAbilityLV(int i)
     {
         abilityScore += i;
+    }
+
+    public int GetExp()
+    {
+        abilityScore++;
+        return abilityScore * playerLv;
+    }
+    public int GetAbilityScore()
+    {
+        return abilityScore;
     }
 }

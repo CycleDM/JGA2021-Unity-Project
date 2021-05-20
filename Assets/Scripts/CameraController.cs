@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,23 +13,24 @@ public class CameraController : MonoBehaviour
     private float angleH;
     private float angleV;
 
-    private GameObject aimObj;
-    private GameObject startObj;
+    //private GameObject aimObj;
+    //private GameObject startObj;
 
 
     void Start()
     {
-        //カーソルをロックする
-        Cursor.lockState = CursorLockMode.Locked;
+        //カーソルをロック
+        //Cursor.lockState = CursorLockMode.Locked;
         //カーソルを見えなくする
-        Cursor.visible = false;
+        //Cursor.visible = false;
 
         targetObj = GameObject.Find("Player");
         targetPos = targetObj.transform.position;
         playerController = targetObj.GetComponent<PlayerController>();
 
-        aimObj = GameObject.Find("Pivot");
-        startObj = GameObject.Find("CameraPos");
+        //aimObj = GameObject.Find("Pivot");
+        //startObj = GameObject.Find("CameraPos");
+        //transform.position = startObj.transform.position;
     }
 
     void Update()
@@ -42,16 +43,17 @@ public class CameraController : MonoBehaviour
         float inputY = Input.GetAxis("Mouse Y");
         //SetCameraUpdate(inputX,inputY);
 
-        if(playerController.GetAimFrag()) // aim
-        {
-            ///
-            //transform.position = Vector3.Lerp(transform.position, aimObj.transform.position, Time.deltaTime * 100.0f);
-        }
-        else // 通常時
-        {
-            SetCameraUpdate(inputX,inputY);
-            //transform.position = Vector3.Lerp(transform.position, startObj.transform.position, Time.deltaTime * 100.0f);
-        }
+        //if(playerController.GetAimFrag()) // aim
+        //{
+        //    transform.position = Vector3.Lerp(transform.position, aimObj.transform.position, Time.deltaTime * 100.0f);
+        //}
+        //else // 通常時
+        //{
+        //    //SetCameraUpdate(inputX,inputY);
+        //    //transform.position = Vector3.Lerp(transform.position, startObj.transform.position, Time.deltaTime * 100.0f);
+        //}
+
+        SetCameraUpdate(inputX,inputY);
     }
 
     private void SetCameraUpdate(float x,float y)

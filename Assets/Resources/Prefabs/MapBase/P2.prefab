@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 6837274451918216912}
   - component: {fileID: 1339965537159169052}
   - component: {fileID: 3787341139731879980}
+  - component: {fileID: 5203009118119923749}
   m_Layer: 0
   m_Name: GameCenter
   m_TagString: Untagged

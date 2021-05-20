@@ -22,7 +22,7 @@ public class TimeController : MonoBehaviour
         if(Time.time - TimeCounter >= 1f)
         {
             TimeCounter = Time.time;
-            ClockHand.GetComponent<RectTransform>().Rotate(0, 0, 315.0f / LimitedTime);
+            ClockHand.GetComponent<RectTransform>().Rotate(0, 0, 270.0f / LimitedTime);
         }
 
         if(CurrentTime >= LimitedTime)
