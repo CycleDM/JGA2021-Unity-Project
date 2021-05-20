@@ -27,9 +27,10 @@ public class EnemyController : MonoBehaviour
     private bool Escape=false;
     private bool collide = false;
 
-        private float m_force;
+    private float m_speed;
 
-
+    [Header("逃げるをプレイヤーの撃退側速度の倍率")]
+    public float m_force = 5.0f;
     private Vector3 direction = new Vector3();//敵とプレイヤーのベクトル
 
     void Awake()
@@ -37,7 +38,7 @@ public class EnemyController : MonoBehaviour
         PlayerRb = Player.GetComponent<Rigidbody>();
         Enemy = GetComponent<NavMeshAgent>();
         Enemy.destination = directPoints[index].position;
-        m_force = Enemy.speed;
+        m_speed = Enemy.speed;
     }
 
     // Update is called once per frame
@@ -62,7 +63,7 @@ public class EnemyController : MonoBehaviour
         direction.y=0;
 
         //逃げる、弾き飛ばすの速度
-        direction= direction * m_force*5.0f;
+        direction= direction * m_speed*m_force;
 
         if(dis <= FindDis)//目的地は探す範囲内
         {
@@ -70,6 +71,9 @@ public class EnemyController : MonoBehaviour
             {
                 if(Player != null)//目的地が存在する場合
                 {
+                    transform.rotation = Quaternion.Slerp(transform.rotation,
+                            Quaternion.LookRotation((Player.transform.position - transform.position)),
+                            m_speed* 5* Time.deltaTime);
                     Enemy.destination = Player.transform.position;//目的地へ移動する
                 }
             }
@@ -87,8 +91,8 @@ public class EnemyController : MonoBehaviour
                 if(Escape)
                 {
                     transform.rotation = Quaternion.Slerp(transform.rotation,
-                            Quaternion.LookRotation(( transform.position- Player.transform.position )),
-                            m_force* 3* Time.deltaTime);
+                            Quaternion.LookRotation((transform.position- Player.transform.position)),
+                            m_speed* 5* Time.deltaTime);
                     transform.position -= (direction*Time.deltaTime);//プレイヤーから逃げる
                 }
             }
@@ -108,9 +112,9 @@ public class EnemyController : MonoBehaviour
     }
 
 
-    void OnCollisionEnter(Collision ctl)
+    void OnCollisionEnter(Collision player)
     {
-        if(gameObject.tag == "Dog")
+        if(gameObject.tag == "Dog"&&player.gameObject.tag=="Player")
             {
         collide =true;
         }

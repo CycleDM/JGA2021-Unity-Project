@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2614702719797901845}
   - component: {fileID: 1433993855795082672}
   - component: {fileID: 3747670649839206778}
-  - component: {fileID: 2577170834063220133}
   - component: {fileID: 2577170834063220135}
   - component: {fileID: 2577170834063220156}
   - component: {fileID: 2577170834063220157}
@@ -85,19 +84,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &2577170834063220133
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3387440198147989679}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1191298, y: 0.23119125, z: 0.34912938}
-  m_Center: {x: 0, y: 0, z: 0.0035552979}
 --- !u!208 &2577170834063220135
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -132,6 +118,8 @@ MonoBehaviour:
   stopTime: 1
   FindDis: 5
   EscapeDis: 20
+  collide: 0
+  m_force: 5
 --- !u!114 &2577170834063220157
 MonoBehaviour:
   m_ObjectHideFlags: 0

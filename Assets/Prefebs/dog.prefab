@@ -253,7 +253,7 @@ GameObject:
   - component: {fileID: 5776323022538789443}
   - component: {fileID: 5776323022538789442}
   - component: {fileID: 5776323022538789452}
-  - component: {fileID: 4271093820735619859}
+  - component: {fileID: 3516843446259137533}
   m_Layer: 0
   m_Name: dog
   m_TagString: Dog
@@ -390,8 +390,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   stopTime: 1
-  FindDis: 10
-  EscapeDis: 20
+  FindDis: 20
+  EscapeDis: 35
+  collide: 0
+  m_force: 5
 --- !u!195 &5776323022538789452
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -414,7 +416,7 @@ NavMeshAgent:
   m_BaseOffset: 0.012205581
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!65 &4271093820735619859
+--- !u!65 &3516843446259137533
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -425,5 +427,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.012728531, y: 0.027805723, z: 0.03392631}
+  m_Size: {x: 0.008980111, y: 0.024411162, z: 0.02987871}
   m_Center: {x: 0, y: 0, z: 0}
