@@ -157,4 +157,10 @@ public class PlayerController : MonoBehaviour
     {
         abilityScore += i;
     }
+
+    public int GetExp()
+    {
+        abilityScore++;
+        return abilityScore * playerLv;
+    }
 }
