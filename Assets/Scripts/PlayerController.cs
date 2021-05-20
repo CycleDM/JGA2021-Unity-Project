@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     private float moveSpeed;
     public float jumpVelocity = 5;
 
-    private bool isOnGround = true;
+    //private bool isOnGround = true;
 
     private bool isSuction = false; // 吸収
 
@@ -24,8 +24,6 @@ public class PlayerController : MonoBehaviour
     private int abilityScore;
 
     private Animator animator;
-	private const string isWalk = "isWalk";
-	private const string isRun = "isRun";
 
     // Start is called before the first frame update
     private void Start()
@@ -46,39 +44,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-       	if (Input.GetKey(KeyCode.DownArrow)) {
-			// WaitからRunに遷移する
-			this.animator.SetBool(isRun, true);
-		}
-		else {
-			// RunからWaitに遷移する
-			this.animator.SetBool(isRun, false);
-		}
 
-		// Wait or Run からJumpに切り替える処理
-		// スペースキーを押下している
-		if (Input.GetKey(KeyCode.Space)) {
-			// Wait or RunからJumpに遷移する
-			this.animator.SetBool(isWalk, true);
-		}
-		else {
-			// JumpからWait or Runに遷移する
-			this.animator.SetBool(isWalk, false);
-		}
 
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
-
-//        // Jump
-//        if (Input.GetButtonDown("Jump"))
-//        {
-//            if (isOnGround)
-//            {
-//                rig.velocity += new Vector3(0, jumpVelocity, 0);
-//                //rig.AddForce(Vector3.up * 300);
-//                isOnGround = false;
-//            }
-//        }
 
         // 吸引
         if (Input.GetMouseButton(0))
@@ -164,10 +133,10 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter(Collision other)
-    {
-        isOnGround = true;
-    }
+    //private void OnCollisionEnter(Collision other)
+    //{
+    //    isOnGround = true;
+    //}
 
     public bool GetSuction()
     {
