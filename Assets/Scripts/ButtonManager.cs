@@ -17,7 +17,7 @@ bool startFlag = false;
     }
 
     // Update is called once per frame
-    public void OnclickStart()
+    public void OnclickToNextScene()
     {
         time = Time.time;
         Destroy(Floor);
@@ -26,16 +26,18 @@ bool startFlag = false;
     public void OnclickQuit()
     {
         UnityEngine.Application.Quit();
-        //UnityEditor.EditorApplication.isPlaying = false;
+        UnityEditor.EditorApplication.isPlaying = false;
     }
 
     void Update()
     {
         if(startFlag)
-        if(time + 3f < Time.time)
         {
-        SceneChanger.SetSceneChange(true);
-        startFlag = false;
+            if(time + 2f < Time.time)
+            {
+                SceneChanger.SetSceneChange(true);
+                startFlag = false;
+            }
         }
     }
 }

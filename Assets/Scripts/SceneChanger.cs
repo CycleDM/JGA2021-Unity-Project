@@ -19,7 +19,7 @@ public class SceneChanger : MonoBehaviour
         if(sceneFlag)
         {
             sceneFlag = false;
-              SceneManager.LoadScene(sceneName);
+            SceneManager.LoadScene(sceneName);
         }
         
     }
