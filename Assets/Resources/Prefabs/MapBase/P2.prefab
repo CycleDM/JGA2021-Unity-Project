@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2432796931595677136}
   - component: {fileID: 7763351127726794045}
   - component: {fileID: 4867575155156793692}
+  - component: {fileID: 7349549127092647960}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -93,6 +94,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &7349549127092647960
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574606062379979202}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1883462110525473331
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,6 +122,7 @@ GameObject:
   - component: {fileID: 8562436824923037918}
   - component: {fileID: 2274338742659526392}
   - component: {fileID: 4471065609142937972}
+  - component: {fileID: 5855902246917609689}
   m_Layer: 0
   m_Name: TallBuilding
   m_TagString: Untagged
@@ -186,6 +204,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &5855902246917609689
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883462110525473331}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &3315655277156096924
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,7 +230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8609979553936330149}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: P2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -233,6 +267,7 @@ GameObject:
   - component: {fileID: 6837274451918216912}
   - component: {fileID: 1339965537159169052}
   - component: {fileID: 3787341139731879980}
+  - component: {fileID: 5203009118119923749}
   m_Layer: 0
   m_Name: GameCenter
   m_TagString: Untagged
@@ -314,6 +349,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &5203009118119923749
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5901413053918704508}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &7074505570536274665
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,6 +377,7 @@ GameObject:
   - component: {fileID: 4154701079593718320}
   - component: {fileID: 7389909570481457428}
   - component: {fileID: 3181803948474733170}
+  - component: {fileID: 6695148900686618128}
   m_Layer: 0
   m_Name: Cinema
   m_TagString: Untagged
@@ -407,6 +459,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &6695148900686618128
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7074505570536274665}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &7216582658488845125
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,6 +487,7 @@ GameObject:
   - component: {fileID: 6225360685125828589}
   - component: {fileID: 4316981683447598050}
   - component: {fileID: 1023020809813684797}
+  - component: {fileID: 567241259908485779}
   m_Layer: 0
   m_Name: TallBuilding (1)
   m_TagString: Untagged
@@ -500,3 +569,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &567241259908485779
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7216582658488845125}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
