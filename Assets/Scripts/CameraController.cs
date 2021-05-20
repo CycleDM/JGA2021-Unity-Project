@@ -13,8 +13,8 @@ public class CameraController : MonoBehaviour
     private float angleH;
     private float angleV;
 
-    private GameObject aimObj;
-    private GameObject startObj;
+    //private GameObject aimObj;
+    //private GameObject startObj;
 
 
     void Start()
