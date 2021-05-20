@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
 
     
     private int playerLv; // =1
-    private int abilityScore;
+    public static int abilityScore;
 
 
     // Start is called before the first frame update
