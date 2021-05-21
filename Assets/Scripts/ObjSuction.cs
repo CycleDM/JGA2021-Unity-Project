@@ -160,7 +160,7 @@ public class ObjSuction : MonoBehaviour
         {
             // ガラクタを破壊
             playerController.SetAbilityLV(junkPoint);
-            //Debug.Log("Destroy : cube");
+            Debug.Log("Destroy : cube");
             Axis.GetComponent<RectTransform>().Rotate(0, 0, junkPoint * 0.9f);
             Destroy(this.gameObject);
         }

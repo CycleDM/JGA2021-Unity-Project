@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
         if(abilityScore > 100)
         {
             abilityScore = 0;
-            ObjSuction.ResetGaugeRot();
+//            ObjSuction.ResetGaugeRot();
             playerLv++;
             if(playerLv > 9)playerLv = 9;
         }
@@ -162,7 +162,7 @@ public class PlayerController : MonoBehaviour
 
     public int GetExp()
     {
-        abilityScore++;
+        if(99 > abilityScore) abilityScore++;
         return abilityScore * playerLv;
     }
     public int GetAbilityScore()

@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   junkLv: 5
-  junkPoint: 1
+  junkPoint: 2
 --- !u!1 &1735002583793755579
 GameObject:
   m_ObjectHideFlags: 0
