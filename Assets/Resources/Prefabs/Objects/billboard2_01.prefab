@@ -1,5 +1,98 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &227534425252981374
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6201877597869907874}
+  - component: {fileID: 4070778363652989361}
+  - component: {fileID: 5322104684755446933}
+  - component: {fileID: 1334468848957746129}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6201877597869907874
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227534425252981374}
+  m_LocalRotation: {x: -0.15566155, y: 0.0042008962, z: -0.011262294, w: 0.9877373}
+  m_LocalPosition: {x: -0.00004, y: -0.00183, z: 0.007}
+  m_LocalScale: {x: 0.007980203, y: 0.0141844, z: 0.025632}
+  m_Children: []
+  m_Father: {fileID: 7915830902943715609}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -17.903002, y: 0.711, z: -1.4180001}
+--- !u!33 &4070778363652989361
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227534425252981374}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &5322104684755446933
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227534425252981374}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!65 &1334468848957746129
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227534425252981374}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9999999, y: 1, z: 1}
+  m_Center: {x: 0.00000023841856, y: 0, z: 0}
 --- !u!1 &7390828001253215139
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,7 +105,6 @@ GameObject:
   - component: {fileID: 6518245578177650364}
   - component: {fileID: 9048156718329686646}
   - component: {fileID: 6065340352329883169}
-  - component: {fileID: 2828230223959374643}
   - component: {fileID: 8159414861306302085}
   m_Layer: 0
   m_Name: billboard2_01
@@ -28,13 +120,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7390828001253215139}
-  m_LocalRotation: {x: 0.17686804, y: -0, z: -0, w: 0.98423463}
-  m_LocalPosition: {x: 2.51, y: 14.446003, z: -23.760807}
+  m_LocalRotation: {x: 0.1763766, y: -0, z: -0, w: 0.9843228}
+  m_LocalPosition: {x: 2.51, y: 14.42969, z: -23.599771}
   m_LocalScale: {x: 150, y: 250, z: 5}
-  m_Children: []
+  m_Children:
+  - {fileID: 6201877597869907874}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 20.375002, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 20.318, y: 0, z: 0}
 --- !u!33 &6518245578177650364
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -98,19 +191,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 36
   m_CollisionDetection: 0
---- !u!65 &2828230223959374643
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7390828001253215139}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.010000006, y: 0.014272389, z: 0.15902661}
-  m_Center: {x: 0.0000000034924594, y: -0.0021361946, z: 0.07434199}
 --- !u!114 &8159414861306302085
 MonoBehaviour:
   m_ObjectHideFlags: 0
