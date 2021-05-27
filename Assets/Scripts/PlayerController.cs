@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private bool isAim = false;
 
     public SceneChanger sceneChanger;
-    public ObjSuction ObjSuction;
+    public UIGauge UIGauge;
 
     
     private int playerLv; // =1
@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
             abilityScore = 0;
             playerLv++;
             if(playerLv > 9)playerLv = 9;
-            ObjSuction.ResetGaugeRot();
+            UIGauge.ResetGaugeRot();
         }
 
 
