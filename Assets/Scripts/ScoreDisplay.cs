@@ -13,7 +13,7 @@ public class ScoreDisplay : MonoBehaviour
     void Start()
     {
         ScoreText = ScoreObject.GetComponent<Text> ();
-        Score = PlayerController.GetAbilityScore();
+        Score = PlayerController.GetExp();
     }
 
     // Update is called once per frame
