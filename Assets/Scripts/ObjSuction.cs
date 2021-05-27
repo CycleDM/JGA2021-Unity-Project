@@ -6,7 +6,7 @@ public class ObjSuction : MonoBehaviour
 {
     // プレイヤークラスの取得
     private PlayerController playerController;
-    private GameObject Axis;
+    public GameObject Axis;
     private GameObject playerObj = null;
     private Vector3 playerPos;
     private Vector3 junkPos;
@@ -191,9 +191,6 @@ public class ObjSuction : MonoBehaviour
         return junkPoint;
     }
 
-    public void ResetGaugeRot()
-    {
-        Axis.GetComponent<RectTransform>().Rotate(0,0,-Axis.GetComponent<RectTransform>().eulerAngles.z);
-    }
+   
 
 }
