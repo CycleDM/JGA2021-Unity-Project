@@ -39,8 +39,11 @@ public class CameraController : MonoBehaviour
         transform.position += targetObj.transform.position - targetPos;
         targetPos = targetObj.transform.position;
 
-        float inputX = Input.GetAxis("Mouse X");
-        float inputY = Input.GetAxis("Mouse Y");
+        //float inputX = Input.GetAxisRaw("Mouse X");
+        //float inputY = Input.GetAxisRaw("Mouse Y");
+        float inputX = Input.GetAxis("Horizontal2");
+        float inputY = Input.GetAxis("Vertical2");
+        
         //SetCameraUpdate(inputX,inputY);
 
         //if(playerController.GetAimFrag()) // aim

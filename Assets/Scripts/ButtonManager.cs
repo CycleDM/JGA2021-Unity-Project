@@ -19,9 +19,10 @@ bool startFlag = false;
     // Update is called once per frame
     public void OnclickToNextScene()
     {
-        time = Time.time;
-        Destroy(Floor);
-        startFlag = true;
+        SceneChanger.SetSceneChange(true);
+        //time = Time.time;
+        //Destroy(Floor);
+        //startFlag = true;
     }
     public void OnclickQuit()
     {
@@ -33,13 +34,23 @@ bool startFlag = false;
 
     void Update()
     {
-        if(startFlag)
+        if(Input.GetButtonDown("joy_A"))
         {
-            if(time + 2f < Time.time)
-            {
-                SceneChanger.SetSceneChange(true);
-                startFlag = false;
-            }
+            OnclickToNextScene();
         }
+
+        if(Input.GetButtonDown("joy_B"))
+        {
+            OnclickQuit();
+        }
+
+        //if(startFlag)
+        //{
+        //    if(time + 2f < Time.time)
+        //    {
+        //        SceneChanger.SetSceneChange(true);
+        //        startFlag = false;
+        //    }
+        //}
     }
 }

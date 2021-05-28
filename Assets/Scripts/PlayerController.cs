@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
         vertical = Input.GetAxisRaw("Vertical");
 
         // 吸引
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) || Input.GetButton("Vacuum"))
         {
             isSuction = true;
         }
@@ -77,12 +77,6 @@ public class PlayerController : MonoBehaviour
         else
         {
             isAim = false;
-        }
-
-         if (Input.GetKey(KeyCode.Z))
-        {
-            sceneChanger.SetSceneChange(true);
-            Cursor.lockState = CursorLockMode.None;
         }
 
         // 速度調整
