@@ -29,6 +29,7 @@ public class TimeController : MonoBehaviour
         if(CurrentTime >= LimitedTime)
         {
             SceneChanger.SetSceneChange(true);
+            Cursor.lockState= CursorLockMode.None;
         }
     }
 }
