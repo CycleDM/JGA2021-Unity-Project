@@ -47,8 +47,8 @@ public class PlayerController : MonoBehaviour
     {
 
 
-        horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical");
+        horizontal = Input.GetAxis("Horizontal");
+        vertical = Input.GetAxis("Vertical");
 
         // 吸引
         if (Input.GetMouseButton(0) || Input.GetButton("Vacuum"))

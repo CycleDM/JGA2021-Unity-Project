@@ -39,12 +39,11 @@ public class CameraController : MonoBehaviour
         transform.position += targetObj.transform.position - targetPos;
         targetPos = targetObj.transform.position;
 
-        //float inputX = Input.GetAxisRaw("Mouse X");
-        //float inputY = Input.GetAxisRaw("Mouse Y");
-        float inputX = Input.GetAxis("Horizontal2");
-        float inputY = Input.GetAxis("Vertical2");
-        
-        //SetCameraUpdate(inputX,inputY);
+        float inputX = Input.GetAxis("Mouse X");
+        float inputY = Input.GetAxis("Mouse Y");
+        //float inputX = Input.GetAxis("Horizontal2") * 5.0f;
+        //float inputY = Input.GetAxis("Vertical2") * 5.0f;
+        SetCameraUpdate(inputX,inputY);
 
         //if(playerController.GetAimFrag()) // aim
         //{
@@ -56,7 +55,7 @@ public class CameraController : MonoBehaviour
         //    //transform.position = Vector3.Lerp(transform.position, startObj.transform.position, Time.deltaTime * 100.0f);
         //}
 
-        SetCameraUpdate(inputX,inputY);
+        //SetCameraUpdate(inputX,inputY);
     }
 
     private void SetCameraUpdate(float x,float y)
