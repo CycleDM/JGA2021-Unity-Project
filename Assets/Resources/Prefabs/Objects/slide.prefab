@@ -75,8 +75,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2a47f2eb43d4714e9622b3f217e5589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Axis: {fileID: 0}
   junkLv: 4
-  junkPoint: 1
+  junkPoint: 3
 --- !u!1 &4262373943092692502
 GameObject:
   m_ObjectHideFlags: 0

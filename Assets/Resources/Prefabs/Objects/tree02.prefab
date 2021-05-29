@@ -124,5 +124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2a47f2eb43d4714e9622b3f217e5589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Axis: {fileID: 0}
   junkLv: 7
-  junkPoint: 2
+  junkPoint: 4
